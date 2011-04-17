@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8' />
+        <title>tetris engine</title>
+    </head>
+    <body>
+        <div id='output'></div>
+        <canvas id='canvas' width='144' height='144'></canvas>
+        <br />
+        <div id="fps"></div>
+        <script src='js/engine.js'></script>
+        <script src='js/engine.map.js'></script>
+        <script src='js/engine.fps.js'></script>
+        <script src='js/engine.keyboard.js'></script>
+        <script src='js/engine.player.js'></script>
+        <script src='js/engine.screen.js'></script>
+        <link rel='stylesheet' href='style.css' media='all' />
+        <script>
+            window.addEventListener('keydown', engine.keyboard.parseInput, false);
+            window.addEventListener('load', function(){
+                engine.start();
+            }, false);
+        </script>
+    </body>
+</html>
