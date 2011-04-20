@@ -1,6 +1,6 @@
 canvas#canvas{
     border: 1px dotted #f06;
-    margin-left: 100px;
+    margin-left: 0px;
 }
 
 canvas#fps{
@@ -17,8 +17,8 @@ canvas#fps{
 }
 
 div#output{
-    width: 250px;
-    height: 150px;
+    width: 0px;
+    height: 0px;
 
     float: left;
 

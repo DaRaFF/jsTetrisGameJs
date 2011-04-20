@@ -1,26 +1,63 @@
-<!doctype html>
-<html lang='en'>
-    <head>
-        <meta charset='UTF-8' />
-        <title>tetris engine</title>
-    </head>
-    <body>
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+<title>Tetris Engine</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
+<style type="text/css">
+    /* Prevent copy paste for all elements except text fields */
+    *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+    input, textarea  { -webkit-user-select:text; }
+    
+    /* Set up the page with a default background image */
+    body {
+        background-color:#fff;
+        color:#000;
+        font-family:Arial;
+        margin:0px;padding:0px;
+    }
+</style>
+<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script> 
+<script type="text/javascript">
+
+/* This code prevents users from dragging the page */
+var preventDefaultScroll = function(event) {
+    event.preventDefault();
+    window.scroll(0,0);
+    return false;
+};
+
+/* This code is used to run as soon as appMobi activates */
+var onDeviceReady=function(){
+    //Size the display to 768px by 1024px
+    AppMobi.display.useViewport(screen.width,screen.width);
+};
+</script>
+
+</head>
+<body>
         <div id='output'></div>
-        <canvas id='canvas' width='144' height='144'></canvas>
+        <canvas id='canvas'></canvas>
         <br />
         <div id="fps"></div>
         <script src='js/engine.js'></script>
         <script src='js/engine.map.js'></script>
         <script src='js/engine.fps.js'></script>
-        <script src='js/engine.keyboard.js'></script>
+        <script src='js/engine.input.js'></script>
         <script src='js/engine.player.js'></script>
         <script src='js/engine.screen.js'></script>
         <link rel='stylesheet' href='style.css' media='all' />
         <script>
-            window.addEventListener('keydown', engine.keyboard.parseInput, false);
+			//mobile
+			document.addEventListener("appMobi.device.ready",onDeviceReady,false);
+			document.addEventListener('touchmove', preventDefaultScroll, false);
+			window.addEventListener('touchstart', engine.input.parseTouchInput, false);  
+			//keyboard
+            window.addEventListener('keydown', engine.input.parseKeyboardInput, false);
+			//start
             window.addEventListener('load', function(){
                 engine.start();
             }, false);
         </script>
-    </body>
+</body>
 </html>

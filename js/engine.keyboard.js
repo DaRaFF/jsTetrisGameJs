@@ -12,6 +12,15 @@ engine.keyboard.getValue = function(key){
 };
 
 engine.keyboard.parseInput = function(event){
+    if(event.touches){
+	    var touch = event.touches[0];
+		//AppMobi.notification.alert("Touch x:" + touch.pageX + ", y:" + touch.pageY,"title","buttontext");
+		event.keyCode = engine.keyboard.getValue('down');
+	}
+    if(event.keyCode){
+		//AppMobi.notification.alert("keyCode: " + event.keyCode);
+	}
+
     switch(event.keyCode){
         case engine.keyboard.getValue('down'):
             engine.player.move('down');

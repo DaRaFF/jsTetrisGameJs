@@ -1,6 +1,12 @@
 engine.player = {};
 
-engine.player.tileX = 8;
+engine.player.currentStone = [
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],
+    ]
+
+engine.player.tileX = 7;
 engine.player.tileY = 0;
 
 engine.player.lastTileX = 0;
@@ -39,7 +45,7 @@ engine.player.move = function(direction){
 }
 
 engine.player.createNew = function(){
-    engine.player.tileX = 8;
+    engine.player.tileX = 7;
     engine.player.tileY = 0;
 }
 
@@ -47,6 +53,23 @@ engine.player.draw = function(){
     engine.context.clearRect(engine.screen.tilesX * engine.player.lastTileX, engine.screen.tilesX * engine.player.lastTileY, engine.screen.tilesX, engine.screen.tilesY);
     engine.context.fillStyle = "rgb(200,0,0)";
     engine.context.fillRect (engine.screen.tilesX * engine.player.tileX, engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
+    //engine.player.drawStone();
 }
 
-
+engine.player.drawStone = function(){
+    for(var i = 0; i < engine.player.currentStone.length; i++){
+        for(var j = 0; j < engine.player.currentStone[0].length; j++){
+            if(engine.player.currentStone[i][j]){
+                engine.context.clearRect(engine.screen.tilesX * j + engine.screen.tilesX * engine.player.lastTileX , engine.screen.tilesX * i + engine.screen.tilesX * engine.player.lastTileY, engine.screen.tilesX, engine.screen.tilesY);
+            }
+        }
+    }
+    for(var i = 0; i < engine.player.currentStone.length; i++){
+        for(var j = 0; j < engine.player.currentStone[0].length; j++){
+            if(engine.player.currentStone[i][j]){
+                engine.context.fillStyle = "rgb(200,0,0)";
+                engine.context.fillRect (engine.screen.tilesX * j + engine.screen.tilesX * engine.player.tileX , engine.screen.tilesX * i + engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
+            }
+        }
+    }
+}
