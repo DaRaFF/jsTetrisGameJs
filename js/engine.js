@@ -1,28 +1,31 @@
 var engine = {
-    canvas: document.getElementById('canvas'),
     outhnd: document.getElementById('output'),
     context: null,
     fps: 100,
     secondsBetweenFrames: null,
-    getWidth: function(){
-        if(screen.width > screen.height){
-            if(screen.height > 1024){
+    getWidth: function(realWidth, realHeight){
+        if(realWidth > realHeight){
+            if(realHeight > 1024){
                 return 1024;
             }
-            return screen.height;
+            return realHeight;
         
         }
         else{
-            if(screen.width > 1024){
+            if(realWidth > 1024){
                 return 1024;
             }
-            return screen.width;       
+            return realWidth;       
         }
     }
 }
 
-engine.canvas.width = engine.getWidth();
-engine.canvas.height = engine.getWidth();
+engine.canvas = {
+    width: engine.getWidth(),
+    height: engine.getWidth()
+};
+engine.canvas = document.getElementById('canvas');
+
 engine.context = engine.canvas.getContext('2d');
 engine.secondsBetweenFrames = 1000 / engine.fps;
 
@@ -33,8 +36,8 @@ engine.output = function(message){
 };
 
 engine.draw = function(){
-    if(engine.canvas.width != engine.getWidth()){
-        engine.canvas.width = engine.canvas.height = engine.getWidth();
+    if(engine.canvas.width != engine.getWidth(screen.width, screen.height)){
+        engine.canvas.width = engine.canvas.height = engine.getWidth(screen.width, screen.height);
         engine.screen.init();
     }
     engine.fallDownTimeLeft -= engine.secondsBetweenFrames;
@@ -60,3 +63,5 @@ engine.loop = function(){
         engine.draw();
     }, engine.secondsBetweenFrames);
 }
+
+
