@@ -1,6 +1,5 @@
-engine.map = {};
-
-engine.map.currentMap = [
+engine.map = {
+    currentMap:  [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -17,7 +16,9 @@ engine.map.currentMap = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1]
-    ];
+    ]
+};
+
 
 engine.map.draw = function(){
     for(var i = 0; i < engine.map.currentMap.length; i++){
