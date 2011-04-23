@@ -1,7 +1,7 @@
 var engine = {
     outhnd: document.getElementById('output'),
     context: null,
-    fps: 100,
+    fps: 1000,
     secondsBetweenFrames: null,
     getWidth: function(realWidth, realHeight){
         if(realWidth > realHeight){

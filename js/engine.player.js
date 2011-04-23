@@ -1,9 +1,14 @@
 engine.player = {
     tileX: 7,
     tileY: 0,
+    currentStone: [
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],
+    ],
     lastTileX: 0,
     lastTileY: 0,
-    currentStone: [
+    lastStone: [
     [0,1,0],
     [0,1,0],
     [1,1,0],
@@ -14,27 +19,33 @@ engine.player = {
 engine.player.move = function(direction){
     this.lastTileX = this.tileX;
     this.lastTileY = this.tileY;
-    var currentStone = this.currentStone;
+    this.lastStone = this.currentStone;
     var currentMap = engine.map.currentMap;
     
     switch(direction){
         
         case 'right':
-            if(!this.collide(currentStone, currentMap, 1, 0)){
+            if(!this.collide(this.currentStone, currentMap, 1, 0)){
                 this.tileX++;
             }
             break;
         case 'left':
-            if(!this.collide(currentStone, currentMap, -1, 0)){
-                engine.player.tileX--;
+            if(!this.collide(this.currentStone, currentMap, -1, 0)){
+                this.tileX--;
             }
             break;
         case 'down':
-            if(this.collide(currentStone, currentMap, 0, 1)){
-                this.fixStone(currentStone, currentMap)
+            if(this.collide(this.currentStone, currentMap, 0, 1)){
+                this.fixStone(this.currentStone, currentMap);
                 this.createNew();
             }
             this.tileY++;
+            break;
+        case 'turn':
+            var turnedStone = this.turnStone(this.currentStone, 'right');
+            if(!this.collide(turnedStone, currentMap, 0, 0)){
+                this.currentStone = this.turnStone(this.currentStone, 'right');
+            }
             break;
     }
 }
@@ -45,10 +56,12 @@ engine.player.createNew = function(){
 }
 
 engine.player.draw = function(){
-    for(var y = 0; y < engine.player.currentStone.length; y++){
-        for(var x = 0; x < engine.player.currentStone[0].length; x++){
-            if(engine.player.currentStone[y][x]){
-                engine.context.clearRect(engine.screen.tilesX * x + engine.screen.tilesX * engine.player.lastTileX , engine.screen.tilesX * y + engine.screen.tilesX * engine.player.lastTileY, engine.screen.tilesX, engine.screen.tilesY);
+    for(var y = 0; y < this.lastStone.length; y++){
+        for(var x = 0; x < this.lastStone[0].length; x++){
+            if(this.lastStone[y][x]){
+                var startX = engine.screen.tilesX * x + engine.screen.tilesX * this.lastTileX;
+                var startY = engine.screen.tilesX * y + engine.screen.tilesX * this.lastTileY;
+                engine.context.clearRect(startX , startY, engine.screen.tilesX, engine.screen.tilesY);
             }
         }
     }
@@ -93,6 +106,7 @@ engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
 }
 
 /**
+ *
  * @param {Array} currentStone
  * @param {Array} currentMap
 */
@@ -109,4 +123,31 @@ engine.player.fixStone = function(currentStone, currentMap){
     }
 }
 
+/**
+ *
+ * @param {Array} currentStone
+ * @param {String} direction 'right'|'left'
+ * @return {Array} turnedStone
+*/
+engine.player.turnStone = function(currentStone, direction){
+    var turnedStone = [[],[],[]];
+    var newTilePosX;
+    var newTilePosY;
+    
+    for(var y = 0; y < currentStone.length; y++){
+        for(var x = 0; x < currentStone[0].length; x++){
+            if(direction === 'right'){
+                newTilePosX = currentStone.length - 1 - y;
+                newTilePosY = x;
+                turnedStone[newTilePosY][newTilePosX] = currentStone[y][x];
+            }
+            if(direction === 'left'){
+                newTilePosX = y;
+                newTilePosY = currentStone[0].length - 1 - x;
+                turnedStone[newTilePosY][newTilePosX] = currentStone[y][x];
+            }
+        }
+    }
+    return turnedStone;
+}
 

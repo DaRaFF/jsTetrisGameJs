@@ -2,6 +2,8 @@ engine.input = {};
 
 engine.input.getValue = function(key){
     switch(key){
+        case 'turn':
+            return 38;
         case 'down':
             return 40;
         case 'left':
@@ -12,17 +14,19 @@ engine.input.getValue = function(key){
 };
 
 engine.input.parseKeyboardInput = function(event){
+    console.log(event.keyCode);
     switch(event.keyCode){
         case engine.input.getValue('down'):
             engine.player.move('down');
             break;
-
         case engine.input.getValue('left'):
             engine.player.move('left');
             break;
-
         case engine.input.getValue('right'):
             engine.player.move('right');
+            break;
+        case engine.input.getValue('turn'):
+            engine.player.move('turn');
             break;
     }
 };
