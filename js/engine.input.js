@@ -14,7 +14,6 @@ engine.input.getValue = function(key){
 };
 
 engine.input.parseKeyboardInput = function(event){
-    console.log(event.keyCode);
     switch(event.keyCode){
         case engine.input.getValue('down'):
             engine.player.move('down');

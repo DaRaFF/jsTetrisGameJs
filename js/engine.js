@@ -1,22 +1,11 @@
 var engine = {
     outhnd: document.getElementById('output'),
     context: null,
-    fps: 1000,
+    fps: 100,
     secondsBetweenFrames: null,
     getWidth: function(realWidth, realHeight){
-        if(realWidth > realHeight){
-            if(realHeight > 1024){
-                return 1024;
-            }
-            return realHeight;
-        
-        }
-        else{
-            if(realWidth > 1024){
-                return 1024;
-            }
-            return realWidth;       
-        }
+        var smaller  = Math.min(realWidth,realHeight);
+        return (smaller > 1024 ? 1024 : smaller);
     }
 }
 
@@ -36,8 +25,8 @@ engine.output = function(message){
 };
 
 engine.draw = function(){
-    if(engine.canvas.width != engine.getWidth(screen.width, screen.height)){
-        engine.canvas.width = engine.canvas.height = engine.getWidth(screen.width, screen.height);
+    if(engine.canvas.width != engine.getWidth(window.innerHeight, window.innerHeight)){
+        engine.canvas.width = engine.canvas.height = engine.getWidth(window.innerHeight, window.innerHeight);
         engine.screen.init();
     }
     engine.fallDownTimeLeft -= engine.secondsBetweenFrames;
