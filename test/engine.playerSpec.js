@@ -1,6 +1,10 @@
-engine.map = {};
-
-engine.map.currentMap = [
+var currentStone = [
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],
+    ];
+    
+var currentMap = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -18,16 +22,5 @@ engine.map.currentMap = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1]
     ];
-
-engine.map.draw = function(){
-    for(var i = 0; i < engine.map.currentMap.length; i++){
-        for(var j = 0; j < engine.map.currentMap[0].length; j++){
-            if(engine.map.currentMap[i][j]){
-                engine.context.fillStyle = "rgb(200,0,0)";
-                engine.context.fillRect (engine.screen.tilesX * j, engine.screen.tilesX * i, engine.screen.tilesX, engine.screen.tilesY);
-            }
-        }
-    }
-}
 
 

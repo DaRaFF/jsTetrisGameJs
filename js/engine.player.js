@@ -4,7 +4,7 @@ engine.player.currentStone = [
     [0,1,0],
     [0,1,0],
     [1,1,0],
-    ]
+    ];
 
 engine.player.tileX = 7;
 engine.player.tileY = 0;
@@ -50,10 +50,10 @@ engine.player.createNew = function(){
 }
 
 engine.player.draw = function(){
-    engine.context.clearRect(engine.screen.tilesX * engine.player.lastTileX, engine.screen.tilesX * engine.player.lastTileY, engine.screen.tilesX, engine.screen.tilesY);
-    engine.context.fillStyle = "rgb(200,0,0)";
-    engine.context.fillRect (engine.screen.tilesX * engine.player.tileX, engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
-    //engine.player.drawStone();
+//    engine.context.clearRect(engine.screen.tilesX * engine.player.lastTileX, engine.screen.tilesX * engine.player.lastTileY, engine.screen.tilesX, engine.screen.tilesY);
+//    engine.context.fillStyle = "rgb(200,0,0)";
+//    engine.context.fillRect (engine.screen.tilesX * engine.player.tileX, engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
+    engine.player.drawStone();
 }
 
 engine.player.drawStone = function(){
@@ -72,4 +72,9 @@ engine.player.drawStone = function(){
             }
         }
     }
+}
+
+engine.player.collideRight = function(currentStone, currentMap){
+    return true;
+    
 }
