@@ -6,6 +6,12 @@ var engine = {
     getWidth: function(realWidth, realHeight){
         var smaller  = Math.min(realWidth,realHeight);
         return (smaller > 1024 ? 1024 : smaller);
+    },
+    getInnerHeight: function(){
+        return window.innerHeight;
+    },
+    getInnerWidth: function(){
+        return window.innerWidth;
     }
 }
 
@@ -25,8 +31,8 @@ engine.output = function(message){
 };
 
 engine.draw = function(){
-    if(engine.canvas.width != engine.getWidth(window.innerHeight, window.innerHeight)){
-        engine.canvas.width = engine.canvas.height = engine.getWidth(window.innerHeight, window.innerHeight);
+    if(engine.canvas.width != engine.getWidth(window.innerWidth, window.innerHeight)){
+        engine.canvas.width = engine.canvas.height = engine.getWidth(window.innerWidth, window.innerHeight);
         engine.screen.init();
     }
     engine.fallDownTimeLeft -= engine.secondsBetweenFrames;
