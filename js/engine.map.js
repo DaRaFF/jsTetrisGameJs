@@ -21,11 +21,11 @@ engine.map = {
 
 
 engine.map.draw = function(){
-    for(var i = 0; i < engine.map.currentMap.length; i++){
-        for(var j = 0; j < engine.map.currentMap[0].length; j++){
-            if(engine.map.currentMap[i][j]){
+    for(var y = 0; y < this.currentMap.length; y++){
+        for(var x = 0; x < this.currentMap[0].length; x++){
+            if(this.currentMap[y][x]){
                 engine.context.fillStyle = "rgb(200,0,0)";
-                engine.context.fillRect (engine.screen.tilesX * j, engine.screen.tilesX * i, engine.screen.tilesX, engine.screen.tilesY);
+                engine.context.fillRect (engine.screen.tilesX * x, engine.screen.tilesX * y, engine.screen.tilesX, engine.screen.tilesY);
             }
         }
     }
