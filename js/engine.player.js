@@ -1,18 +1,42 @@
 engine.player = {
     tileX: 7,
     tileY: 0,
-    lastInput: null,
-    currentStone: [
-        [0,1,0],
-        [0,1,0],
-        [1,1,0],
-    ],
     lastTileX: 0,
     lastTileY: 0,
+    lastInput: null,
+    nextStone: [
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],
+    ],
+    currentStone: [
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],
+    ],
     lastStone: [
-        [0,1,0],
-        [0,1,0],
-        [1,1,0],
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],
+    ],
+    stones: [
+    [
+    [0,1,0],
+    [0,1,0],
+    [1,1,0],    
+    ],
+    [
+    [0,1,0],
+    [0,1,0],
+    [0,1,1],    
+    ],
+    [
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0],    
+    [0,1,0,0],    
+    ],
+        
     ]
 };
 
@@ -31,7 +55,9 @@ engine.player.move = function(direction){
  *
  * @returns {void}
  */
-engine.player.createNew = function(){
+engine.player.createNewStone = function(){
+    this.currentStone = this.nextStone;
+    this.nextStone = this.stones[Math.floor(Math.random()*3)];
     engine.player.tileX = 7;
     engine.player.tileY = 0;
 }
@@ -53,8 +79,8 @@ engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
                 var newTilePosY = this.tileY + y + dTilesY;
                 //collision border
                 if(  newTilePosX >= currentMap[0].length || //collision right border
-                newTilePosX  < 0 || //collision left border
-                newTilePosY >= currentMap.length ){ //collision bottom border
+                    newTilePosX  < 0 || //collision left border
+                    newTilePosY >= currentMap.length ){ //collision bottom border
                     return true;
                 }
                 //collision check horizontal with map
@@ -75,7 +101,7 @@ engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
  * @return {Array} turnedStone
  */
 engine.player.turnStone = function(currentStone, direction){
-    var turnedStone = [[],[],[]];
+    var turnedStone = (currentStone.length == 3 ? [[],[],[]] :  [[],[],[],[]]);
     var newTilePosX;
     var newTilePosY;
     
@@ -94,6 +120,10 @@ engine.player.turnStone = function(currentStone, direction){
         }
     }
     return turnedStone;
+}
+
+engine.player.init = function(){
+    this.createNewStone();
 }
 
 /**
@@ -138,7 +168,8 @@ engine.player.update = function(){
         case 'down':
             if(this.collide(this.currentStone, currentMap, 0, 1)){
                 engine.map.fixStone(this.currentStone, currentMap);
-                this.createNew();
+                engine.map.reduceLines();
+                this.createNewStone();
             }
             this.tileY++;
             break;

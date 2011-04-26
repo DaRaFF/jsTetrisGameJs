@@ -42,21 +42,26 @@ engine.map.fixStone = function(currentStone, currentMap){
 /**
  * Check if row is full
  *
- * @param {integer} row in map to check (0 - tileCountY)
+ * @param {integer} tileYPos row in map to check (0 - tileCountY)
  * @return {boolean}
  */
 engine.map.rowFull = function(tileYPos){
-    return false;
+    for(var x = 0; x < this.currentMap[0].length; x++){
+        if(!this.currentMap[tileYPos][x]){
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
  * Delete row
  *
  * @param {integer} row in map (0 - tileCountY)
- * @return {boolean} success
+ * @return {void}
  */
 engine.map.rowDelete = function(tileYPos){
-    return false;
+    this.currentMap.splice(tileYPos,1);
 }
 
 /**
@@ -64,7 +69,13 @@ engine.map.rowDelete = function(tileYPos){
  *
  * @return {void}
  */
-engine.map.rowsDelete = function(){
+engine.map.reduceLines = function(){
+    for(var y = 0; y < this.currentMap.length; y++){
+        if(this.rowFull(y)){
+           this.rowDelete(y);
+           this.currentMap.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+        }
+    }
 }
 
 engine.map.draw = function(){
@@ -80,6 +91,6 @@ engine.map.draw = function(){
 
 engine.map.update = function(){
     
-}
+    }
 
 
