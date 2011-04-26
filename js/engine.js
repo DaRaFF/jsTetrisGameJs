@@ -29,29 +29,9 @@ engine.output = function(message){
     engine.outhnd.innerHTML += '<br />' + message;   // print a message to the output div
 };
 
-engine.draw = function(){
-    engine.fallDownTimeLeft -= new Date - engine.lastTick;
-    engine.lastTick = new Date;
-    if(engine.fallDownTimeLeft <= 0){
-        engine.fallDownTimeLeft = engine.fallDownTime;
-        engine.player.draw();
-        engine.player.move("down");
-    }
-    engine.player.draw();
-    engine.map.draw();
-};
-
-engine.update = function(){
-    if(engine.canvas.width != engine.getWidth(window.innerWidth, window.innerHeight)){
-        engine.canvas.width = engine.canvas.height = engine.getWidth(window.innerWidth, window.innerHeight);
-        engine.screen.init();
-    }
-}
-
 engine.start = function(){
     engine.screen.init();
     engine.context.translate( 0, 0 );
-    engine.draw();
     engine._intervalId = setInterval(engine.loop, 0);
 };
 
@@ -74,6 +54,22 @@ engine.loop = (function() {
     };
 })();
 
+engine.draw = function(){
+    engine.fallDownTimeLeft -= new Date - engine.lastTick;
+    engine.lastTick = new Date;
+    engine.screen.draw();
+    engine.player.draw();
+    engine.map.draw();
+};
 
-
-
+engine.update = function(){
+    if(engine.canvas.width != engine.getWidth(window.innerWidth, window.innerHeight)){
+        engine.canvas.width = engine.canvas.height = engine.getWidth(window.innerWidth, window.innerHeight);
+        engine.screen.init();
+    }
+    if(engine.fallDownTimeLeft <= 0){
+        engine.fallDownTimeLeft = engine.fallDownTime;
+        engine.player.move("down");
+    }
+    engine.player.update();
+}

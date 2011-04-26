@@ -14,3 +14,10 @@ engine.screen.init = function(){
     engine.screen.tilesX = engine.canvas.width / engine.screen.tileCountX;   
     engine.screen.tilesY = engine.canvas.height / engine.screen.tileCountY;    
 }
+
+engine.screen.draw = function(){
+    engine.context.clearRect(0 , 0, this.width, this.height);
+}
+
+engine.screen.update = function(){
+}
