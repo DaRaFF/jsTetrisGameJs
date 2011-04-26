@@ -31,6 +31,25 @@ engine.player = {
     [0,1,1],    
     ],
     [
+    [0,0,0],
+    [1,1,1],
+    [0,1,0],    
+    ],
+    [
+    [0,1,0],
+    [0,1,1],
+    [0,0,1],    
+    ],
+    [
+    [1,1],
+    [1,1],
+    ],
+    [
+    [0,0,1],
+    [0,1,1],
+    [0,1,0],    
+    ],
+    [
     [0,1,0,0],
     [0,1,0,0],
     [0,1,0,0],    
@@ -57,7 +76,7 @@ engine.player.move = function(direction){
  */
 engine.player.createNewStone = function(){
     this.currentStone = this.nextStone;
-    this.nextStone = this.stones[Math.floor(Math.random()*3)];
+    this.nextStone = this.stones[Math.floor(Math.random() * this.stones.length)];
     engine.player.tileX = 7;
     engine.player.tileY = 0;
 }
@@ -101,7 +120,21 @@ engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
  * @return {Array} turnedStone
  */
 engine.player.turnStone = function(currentStone, direction){
-    var turnedStone = (currentStone.length == 3 ? [[],[],[]] :  [[],[],[],[]]);
+    var turnedStone = [];
+    switch (currentStone.length) {
+        case 2:
+            turnedStone = [[],[]];
+            break;
+        case 3:
+            turnedStone = [[],[],[]];
+            break;
+        case 4:
+            turnedStone = [[],[],[],[]];
+            break;
+        default:
+            break;
+    }
+
     var newTilePosX;
     var newTilePosY;
     
