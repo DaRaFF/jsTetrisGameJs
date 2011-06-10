@@ -1,8 +1,8 @@
 body{
-            background-color:#fff;
-        color:#000;
-        font-family:Arial;
-        margin:0px;padding:0px;
+    background-color:#fff;
+    color:#000;
+    font-family:Arial;
+    margin:0px;padding:0px;
     overflow: hidden;
 }
 
@@ -19,4 +19,20 @@ canvas#canvas{
 
 input, textarea  { 
     -webkit-user-select:text; 
+}
+
+#next_shape {
+    position: relative; 
+    background-color: #000; 
+    border: 1px solid white;
+    width: 110px; 
+    height: 110px;
+}
+#info {
+    background-color: #000; 
+    color: #fff; 
+    width: 110px; 
+    height: 420px; 
+    padding: 10px;
+    float: left;
 }
