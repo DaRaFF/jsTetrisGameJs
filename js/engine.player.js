@@ -58,24 +58,24 @@ engine.player.move = function(direction){
  * @returns boolean
  */
 engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
-//    for(var y = 0; y < currentStone.length; y++){
-//        for(var x = 0; x < currentStone[0].length; x++){
-//            if(currentStone[y][x]){
-//                var newTilePosX = this.tileX + x + dTilesX;
-//                var newTilePosY = this.tileY + y + dTilesY;
-//                //collision border
-//                if(  newTilePosX >= currentMap[0].length || //collision right border
-//                    newTilePosX  < 0 || //collision left border
-//                    newTilePosY >= currentMap.length ){ //collision bottom border
-//                    return true;
-//                }
-//                //collision check horizontal with map
-//                if(currentMap[newTilePosY][newTilePosX]){
-//                    return true;
-//                }
-//            }
-//        }
-//    }
+    //    for(var y = 0; y < currentStone.length; y++){
+    //        for(var x = 0; x < currentStone[0].length; x++){
+    //            if(currentStone[y][x]){
+    //                var newTilePosX = this.tileX + x + dTilesX;
+    //                var newTilePosY = this.tileY + y + dTilesY;
+    //                //collision border
+    //                if(  newTilePosX >= currentMap[0].length || //collision right border
+    //                    newTilePosX  < 0 || //collision left border
+    //                    newTilePosY >= currentMap.length ){ //collision bottom border
+    //                    return true;
+    //                }
+    //                //collision check horizontal with map
+    //                if(currentMap[newTilePosY][newTilePosX]){
+    //                    return true;
+    //                }
+    //            }
+    //        }
+    //    }
     return false;
 }
 
@@ -85,14 +85,22 @@ engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
  * @return {void} 
  */
 engine.player.draw = function(){
-    for(var y = 0; y < engine.player.currentStone.length; y++){
-        for(var x = 0; x < engine.player.currentStone[0].length; x++){
-            if(engine.player.currentStone[y][x]){
+    for(var y = 0; y < engine.player.currentStone.shape.length; y++){
+        for(var x = 0; x < engine.player.currentStone.shape[0].length; x++){
+            if(engine.player.currentStone.shape[y][x]){
                 engine.context.fillStyle = "rgb(200,0,0)";
                 engine.context.fillRect (engine.screen.tilesX * x + engine.screen.tilesX * engine.player.tileX , engine.screen.tilesX * y + engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
             }
         }
     }
+//    for(var y = 0; y < engine.player.currentStone.length; y++){
+//        for(var x = 0; x < engine.player.currentStone[0].length; x++){
+//            if(engine.player.currentStone[y][x]){
+//                engine.context.fillStyle = "rgb(200,0,0)";
+//                engine.context.fillRect (engine.screen.tilesX * x + engine.screen.tilesX * engine.player.tileX , engine.screen.tilesX * y + engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
+//            }
+//        }
+//    }
 }
 
 /**

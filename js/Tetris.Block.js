@@ -1,11 +1,42 @@
+/**
+ * Block
+ *
+ * @param {Array} shape The shape of the block in tiles
+ * 
+ * Example:
+ * [ 
+ *   [0,1,0],
+ *   [0,1,0],
+ *   [1,1,0],    
+ * ]
+ * @param {Number} tileX
+ * @param {Number} tileY
+ * @returns
+ */
 Tetris.Block = function(shape, tileX, tileY){
+    /** The x position of the block on the map in tiles
+    * @type Number
+    */
     this.tileX = tileX;
+    /** The y position of the block on the map in tiles
+    * @type Number
+    */
     this.tileY = tileY;
     this.lastTileX = 0;
     this.lastTileY = 0;
+    /** 
+    * The shape of the block in tiles
+    * 
+    * Example:
+    * [ 
+    *   [0,1,0],
+    *   [0,1,0],
+    *   [1,1,0],    
+    * ]
+    * @type Array
+    */
     this.shape = shape;
     
-    //tetris.blockfactory.turnStone = function(stone, direction){
     /**
     * Turns the Block in given direction
     *
@@ -49,4 +80,3 @@ Tetris.Block = function(shape, tileX, tileY){
         return turnedStone;
     }
 }
-
