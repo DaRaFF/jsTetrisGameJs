@@ -31,7 +31,7 @@ engine.output = function(message){
 
 engine.start = function(){
     engine.screen.init();
-    engine.player.init();
+    engine.player.init(tetris.blockfactory);
     engine.context.translate( 0, 0 );
     engine._intervalId = setInterval(engine.loop, 0);
 };

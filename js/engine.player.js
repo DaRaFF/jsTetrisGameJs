@@ -1,63 +1,46 @@
 engine.player = {
-    tileX: 7,
-    tileY: 0,
+    tileX: null,
+    tileY: null,
+    tileXStartPosition: 7,
+    tileYStartPosition: 0,
     lastTileX: 0,
     lastTileY: 0,
     lastInput: null,
-    nextStone: [
-    [0,1,0],
-    [0,1,0],
-    [1,1,0],
-    ],
-    currentStone: [
-    [0,1,0],
-    [0,1,0],
-    [1,1,0],
-    ],
-    lastStone: [
-    [0,1,0],
-    [0,1,0],
-    [1,1,0],
-    ],
-    stones: [
-    [
-    [0,1,0],
-    [0,1,0],
-    [1,1,0],    
-    ],
-    [
-    [0,1,0],
-    [0,1,0],
-    [0,1,1],    
-    ],
-    [
-    [0,0,0],
-    [1,1,1],
-    [0,1,0],    
-    ],
-    [
-    [0,1,0],
-    [0,1,1],
-    [0,0,1],    
-    ],
-    [
-    [1,1],
-    [1,1],
-    ],
-    [
-    [0,0,1],
-    [0,1,1],
-    [0,1,0],    
-    ],
-    [
-    [0,1,0,0],
-    [0,1,0,0],
-    [0,1,0,0],    
-    [0,1,0,0],    
-    ],
-        
-    ]
+    nextStone: null,
+    currentStone: null,
+    lastStone: null,
+    blockfactory: null
 };
+
+/**
+ * initialisation of the Player
+ * 
+ * @param {tetris.blockfactory} blockfactory for block handling
+ * @returns {void}
+ */
+engine.player.init = function(blockfactory){
+    this.blockfactory = blockfactory;
+    this.lastStone = [
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+    ];
+    this.nextStone = this.blockfactory.create();
+    this.createNewStone();
+    
+}
+
+/**
+ * Create a new stone
+ *
+ * @returns {void}
+ */
+engine.player.createNewStone = function(){
+    this.currentStone = this.nextStone;
+    this.nextStone = this.blockfactory.create();
+    engine.player.tileX = engine.player.tileXStartPosition;
+    engine.player.tileY = engine.player.tileYStartPosition;
+}
 
 /**
  * Move the stone in a direction
@@ -69,17 +52,6 @@ engine.player.move = function(direction){
     this.lastInput = direction;
 }
 
-/**
- * Create a new stone
- *
- * @returns {void}
- */
-engine.player.createNewStone = function(){
-    this.currentStone = this.nextStone;
-    this.nextStone = this.stones[Math.floor(Math.random() * this.stones.length)];
-    engine.player.tileX = 7;
-    engine.player.tileY = 0;
-}
 
 /**
  * Collision detection between a stone and the map if the stone is moving in x,y axis
@@ -153,10 +125,6 @@ engine.player.turnStone = function(currentStone, direction){
         }
     }
     return turnedStone;
-}
-
-engine.player.init = function(){
-    this.createNewStone();
 }
 
 /**
