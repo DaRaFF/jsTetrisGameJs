@@ -19,7 +19,6 @@ engine.map = {
     ]
 };
 
-
 /**
  * Fix a stone in the map
  *

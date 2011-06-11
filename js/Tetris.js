@@ -1,0 +1,3 @@
+var tetris = {};
+var Tetris = {};
+

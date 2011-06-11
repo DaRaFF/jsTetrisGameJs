@@ -15,18 +15,13 @@ engine.player = {
 /**
  * initialisation of the Player
  * 
- * @param {tetris.blockfactory} blockfactory for block handling
+ * @param {Tetris.Block.Factory} blockFactory for block handling
  * @returns {void}
  */
-engine.player.init = function(blockfactory){
-    this.blockfactory = blockfactory;
-    this.lastStone = [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0],
-    ];
-    this.nextStone = this.blockfactory.create();
-    this.createNewStone();
+engine.player.init = function(blockFactory){
+    this.blockFactory = blockFactory;
+    this.currentStone = this.blockFactory.create(Tetris.Block.Elements, this.tileXStartPosition, this.tileYStartPosition);
+    this.nextStone = this.blockFactory.create(Tetris.Block.Elements, this.tileXStartPosition, this.tileYStartPosition);
     
 }
 
@@ -37,7 +32,7 @@ engine.player.init = function(blockfactory){
  */
 engine.player.createNewStone = function(){
     this.currentStone = this.nextStone;
-    this.nextStone = this.blockfactory.create();
+    this.nextStone = this.blockFactory.create(Tetris.Block.Elements, this.tileXStartPosition, this.tileYStartPosition);
     engine.player.tileX = engine.player.tileXStartPosition;
     engine.player.tileY = engine.player.tileYStartPosition;
 }
@@ -45,7 +40,7 @@ engine.player.createNewStone = function(){
 /**
  * Move the stone in a direction
  *
- * @param {string} direction the direction to move
+ * @param {tetris.command} direction the direction to move
  * @returns {void}
  */
 engine.player.move = function(direction){
@@ -63,68 +58,25 @@ engine.player.move = function(direction){
  * @returns boolean
  */
 engine.player.collide = function(currentStone, currentMap, dTilesX, dTilesY){
-    for(var y = 0; y < currentStone.length; y++){
-        for(var x = 0; x < currentStone[0].length; x++){
-            if(currentStone[y][x]){
-                var newTilePosX = this.tileX + x + dTilesX;
-                var newTilePosY = this.tileY + y + dTilesY;
-                //collision border
-                if(  newTilePosX >= currentMap[0].length || //collision right border
-                    newTilePosX  < 0 || //collision left border
-                    newTilePosY >= currentMap.length ){ //collision bottom border
-                    return true;
-                }
-                //collision check horizontal with map
-                if(currentMap[newTilePosY][newTilePosX]){
-                    return true;
-                }
-            }
-        }
-    }
+//    for(var y = 0; y < currentStone.length; y++){
+//        for(var x = 0; x < currentStone[0].length; x++){
+//            if(currentStone[y][x]){
+//                var newTilePosX = this.tileX + x + dTilesX;
+//                var newTilePosY = this.tileY + y + dTilesY;
+//                //collision border
+//                if(  newTilePosX >= currentMap[0].length || //collision right border
+//                    newTilePosX  < 0 || //collision left border
+//                    newTilePosY >= currentMap.length ){ //collision bottom border
+//                    return true;
+//                }
+//                //collision check horizontal with map
+//                if(currentMap[newTilePosY][newTilePosX]){
+//                    return true;
+//                }
+//            }
+//        }
+//    }
     return false;
-}
-
-/**
- * Turns a stone
- *
- * @param {Array} currentStone
- * @param {String} direction 'right'|'left'
- * @return {Array} turnedStone
- */
-engine.player.turnStone = function(currentStone, direction){
-    var turnedStone = [];
-    switch (currentStone.length) {
-        case 2:
-            turnedStone = [[],[]];
-            break;
-        case 3:
-            turnedStone = [[],[],[]];
-            break;
-        case 4:
-            turnedStone = [[],[],[],[]];
-            break;
-        default:
-            break;
-    }
-
-    var newTilePosX;
-    var newTilePosY;
-    
-    for(var y = 0; y < currentStone.length; y++){
-        for(var x = 0; x < currentStone[0].length; x++){
-            if(direction === 'right'){
-                newTilePosX = currentStone.length - 1 - y;
-                newTilePosY = x;
-                turnedStone[newTilePosY][newTilePosX] = currentStone[y][x];
-            }
-            if(direction === 'left'){
-                newTilePosX = y;
-                newTilePosY = currentStone[0].length - 1 - x;
-                turnedStone[newTilePosY][newTilePosX] = currentStone[y][x];
-            }
-        }
-    }
-    return turnedStone;
 }
 
 /**
@@ -156,17 +108,17 @@ engine.player.update = function(){
     
     switch(this.lastInput){
         
-        case 'right':
+        case tetris.command.RIGHT:
             if(!this.collide(this.currentStone, currentMap, 1, 0)){
                 this.tileX++;
             }
             break;
-        case 'left':
+        case tetris.command.LEFT:
             if(!this.collide(this.currentStone, currentMap, -1, 0)){
                 this.tileX--;
             }
             break;
-        case 'down':
+        case tetris.command.DOWN:
             if(this.collide(this.currentStone, currentMap, 0, 1)){
                 engine.map.fixStone(this.currentStone, currentMap);
                 engine.map.reduceLines();
@@ -174,10 +126,11 @@ engine.player.update = function(){
             }
             this.tileY++;
             break;
-        case 'turn':
-            var turnedStone = this.turnStone(this.currentStone, 'right');
+        case tetris.command.TURN:
+            var test = new Tetris.Block(Tetris.Block.Elements, this.tileX, this.tileY);
+            var turnedStone = test.turn(this.currentStone, 'right');
             if(!this.collide(turnedStone, currentMap, 0, 0)){
-                this.currentStone = this.turnStone(this.currentStone, 'right');
+                this.currentStone = test.turn(this.currentStone, 'right');
             }
             break;
         default:

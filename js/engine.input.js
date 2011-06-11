@@ -1,31 +1,18 @@
 engine.input = {};
 
-engine.input.getValue = function(key){
-    switch(key){
-        case 'turn':
-            return 38;
-        case 'down':
-            return 40;
-        case 'left':
-            return 37;
-        case 'right':
-            return 39;
-    }
-};
-
 engine.input.parseKeyboardInput = function(event){
     switch(event.keyCode){
-        case engine.input.getValue('down'):
-            engine.player.move('down');
+        case tetris.command.DOWN:
+            engine.player.move(tetris.command.DOWN);
             break;
-        case engine.input.getValue('left'):
-            engine.player.move('left');
+        case tetris.command.LEFT:
+            engine.player.move(tetris.command.LEFT);
             break;
-        case engine.input.getValue('right'):
-            engine.player.move('right');
+        case tetris.command.RIGHT:
+            engine.player.move(tetris.command.RIGHT);
             break;
-        case engine.input.getValue('turn'):
-            engine.player.move('turn');
+        case tetris.command.TURN:
+            engine.player.move(tetris.command.TURN);
             break;
     }
 };

@@ -1,5 +1,4 @@
-tetris.blockfactory = {
-    stones: [
+Tetris.Block.Elements = [
     [ // J
     [0,1,0],
     [0,1,0],
@@ -35,16 +34,6 @@ tetris.blockfactory = {
     [0,1,0,0],    
     [0,1,0,0],    
     ],
-    ]
-}
-
-/**
- * Create a new stone
- *
- * @returns {array} block
- */
-tetris.blockfactory.create = function(){
-    return this.stones[Math.floor(Math.random() * this.stones.length)];
-}
+    ];
 
 

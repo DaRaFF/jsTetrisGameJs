@@ -30,8 +30,10 @@ engine.output = function(message){
 };
 
 engine.start = function(){
+    tetris.command.init();
     engine.screen.init();
-    engine.player.init(tetris.blockfactory);
+    var blockFactory = new Tetris.Block.Factory();
+    engine.player.init(blockFactory);
     engine.context.translate( 0, 0 );
     engine._intervalId = setInterval(engine.loop, 0);
 };
@@ -70,7 +72,7 @@ engine.update = function(){
     }
     if(engine.fallDownTimeLeft <= 0){
         engine.fallDownTimeLeft = engine.fallDownTime;
-        engine.player.move("down");
+        engine.player.move(tetris.command.DOWN);
     }
     engine.player.update();
 }

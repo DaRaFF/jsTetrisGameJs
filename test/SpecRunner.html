@@ -1,33 +1,39 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-  <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="../lib/jasmine-0.11.1/jasmine.css">
-  <script type="text/javascript" src="../lib/jasmine-0.11.1/jasmine.js"></script>
-  <script type="text/javascript" src="../lib/jasmine-0.11.1/jasmine-html.js"></script>
+    <head>
+        <title>Jasmine Test Runner</title>
+        <link rel="stylesheet" type="text/css" href="../lib/jasmine-0.11.1/jasmine.css">
+        <script src="../lib/jasmine-0.11.1/jasmine.js"></script>
+        <script src="../lib/jasmine-0.11.1/jasmine-html.js"></script>
 
-  <!-- include source files here... -->
-  <script type="text/javascript" src="../js/tetris.blockfactory.js"></script>
-  <script type="text/javascript" src="../js/engine.js"></script>
-  <script type="text/javascript" src="../js/engine.screen.js"></script>
-  <script type="text/javascript" src="../js/engine.input.js"></script>
-  <script type="text/javascript" src="../js/engine.player.js"></script>
-  <script type="text/javascript" src="../js/engine.map.js"></script>
+        <!-- include source files here... -->
+        <script src='../js/Tetris.js'></script>
+        <script src='../js/Tetris.Block.js'></script>
+        <script src='../js/Tetris.Block.Elements.js'></script>
+        <script src='../js/Tetris.Block.Factory.js'></script>
+        <script src='../js/Tetris.Map.js'></script>
+        <script src='../js/tetris.command.js'></script>
+        <script src="../js/tetris.blockfactory.js"></script>
+        <script src="../js/engine.js"></script>
+        <script src="../js/engine.screen.js"></script>
+        <script src="../js/engine.input.js"></script>
+        <script src="../js/engine.player.js"></script>
+        <script src="../js/engine.map.js"></script>
 
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="engineSpec.js"></script>
-  <script type="text/javascript" src="engine.inputSpec.js"></script>
-  <script type="text/javascript" src="engine.playerSpec.js"></script>
-  <script type="text/javascript" src="engine.mapSpec.js"></script>
+        <!-- include spec files here... -->
+        <script src="Tetris.Block.FactorySpec.js"></script>
+        <script src="tetris.blockSpec.js"></script>
+        <script src="engineSpec.js"></script>
+        <script src="engine.inputSpec.js"></script>
+        <script src="engine.playerSpec.js"></script>
+        <script src="engine.mapSpec.js"></script>
 
-</head>
-<body>
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-  jasmine.getEnv().execute();
-</script>
+    </head>
+    <body>
+        <script>
+            jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+            jasmine.getEnv().execute();
+        </script>
 
-</body>
+    </body>
 </html>
-  
