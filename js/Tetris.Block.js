@@ -38,23 +38,23 @@ Tetris.Block = function(shape, tileX, tileY){
     this.shape = shape;
     
     /**
-    * Turns the Block in given direction
+    * Turns the shape in given direction
     *
-    * @param {Tetris.Block} block
     * @param {String} direction 'right'|'left'
-    * @return {Tetris.Block} turned Block
+    * @return {void}
     */
-    this.turn = function(block, direction){
-        var turnedStone = [];
-        switch (block.length) {
+    this.turn = function(direction){
+        var oldShape = this.shape;
+        var newShape = [];
+        switch (oldShape.length) {
             case 2:
-                turnedStone = [[],[]];
+                newShape = [[],[]];
                 break;
             case 3:
-                turnedStone = [[],[],[]];
+                newShape = [[],[],[]];
                 break;
             case 4:
-                turnedStone = [[],[],[],[]];
+                newShape = [[],[],[],[]];
                 break;
             default:
                 break;
@@ -63,20 +63,20 @@ Tetris.Block = function(shape, tileX, tileY){
         var newTilePosX;
         var newTilePosY;
     
-        for(var y = 0; y < block.length; y++){
-            for(var x = 0; x < block[0].length; x++){
+        for(var y = 0; y < oldShape.length; y++){
+            for(var x = 0; x < oldShape[0].length; x++){
                 if(direction === 'right'){
-                    newTilePosX = block.length - 1 - y;
+                    newTilePosX = oldShape.length - 1 - y;
                     newTilePosY = x;
-                    turnedStone[newTilePosY][newTilePosX] = block[y][x];
+                    newShape[newTilePosY][newTilePosX] = oldShape[y][x];
                 }
                 if(direction === 'left'){
                     newTilePosX = y;
-                    newTilePosY = block[0].length - 1 - x;
-                    turnedStone[newTilePosY][newTilePosX] = block[y][x];
+                    newTilePosY = oldShape[0].length - 1 - x;
+                    newShape[newTilePosY][newTilePosX] = oldShape[y][x];
                 }
             }
         }
-        return turnedStone;
+        this.shape = newShape;
     }
 }

@@ -89,7 +89,11 @@ engine.player.draw = function(){
         for(var x = 0; x < engine.player.currentStone.shape[0].length; x++){
             if(engine.player.currentStone.shape[y][x]){
                 engine.context.fillStyle = "rgb(200,0,0)";
-                engine.context.fillRect (engine.screen.tilesX * x + engine.screen.tilesX * engine.player.tileX , engine.screen.tilesX * y + engine.screen.tilesX * engine.player.tileY, engine.screen.tilesX, engine.screen.tilesY);
+                engine.context.fillRect (
+                    engine.screen.tilesX * x + engine.screen.tilesX * engine.player.currentStone.tileX , 
+                    engine.screen.tilesX * y + engine.screen.tilesX * engine.player.currentStone.tileY, 
+                    engine.screen.tilesX, engine.screen.tilesY
+                    );
             }
         }
     }
@@ -110,27 +114,26 @@ engine.player.update = function(){
         
         case tetris.command.RIGHT:
             if(!this.collide(this.currentStone, currentMap, 1, 0)){
-                this.tileX++;
+                engine.player.currentStone.tileX++;
             }
             break;
         case tetris.command.LEFT:
             if(!this.collide(this.currentStone, currentMap, -1, 0)){
-                this.tileX--;
+                engine.player.currentStone.tileX--;
             }
             break;
         case tetris.command.DOWN:
-            if(this.collide(this.currentStone, currentMap, 0, 1)){
-                engine.map.fixStone(this.currentStone, currentMap);
+            if(this.collide(engine.player.currentStone, currentMap, 0, 1)){
+                engine.map.fixStone(engine.player.currentStone, currentMap);
                 engine.map.reduceLines();
-                this.createNewStone();
+                engine.player.createNewStone();
             }
-            this.tileY++;
+            engine.player.currentStone.tileY++;
             break;
         case tetris.command.TURN:
-            var test = new Tetris.Block(Tetris.Block.Elements, this.tileX, this.tileY);
-            var turnedStone = test.turn(this.currentStone, 'right');
-            if(!this.collide(turnedStone, currentMap, 0, 0)){
-                this.currentStone = test.turn(this.currentStone, 'right');
+            engine.player.currentStone.turn('right');
+            if(engine.player.collide(engine.player.currentStone, currentMap, 0, 0)){
+               engine.player.currentStone.turn('left');
             }
             break;
         default:

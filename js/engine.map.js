@@ -2,7 +2,7 @@ engine.map = {};
 engine.map.currentMap = new Tetris.Map(16, 16);
 
 /**
- * Fix a stone in the map
+ * Fixes a block in the map
  *
  * @param {Tetris.Block} block
  * @param {Tetris.Map} map
@@ -17,6 +17,7 @@ engine.map.fixStone = function(block, map){
             }
         }
     }
+    console.log(engine.map.currentMap);
 }
 
 /**
@@ -52,16 +53,16 @@ engine.map.rowDelete = function(tileYPos){
 engine.map.reduceLines = function(){
     for(var y = 0; y < this.currentMap.length; y++){
         if(this.rowFull(y)){
-           this.rowDelete(y);
-           this.currentMap.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+            this.rowDelete(y);
+            this.currentMap.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
         }
     }
 }
 
 engine.map.draw = function(){
-    for(var y = 0; y < this.currentMap.length; y++){
-        for(var x = 0; x < this.currentMap[0].length; x++){
-            if(this.currentMap[y][x]){
+    for(var y = 0; y < this.currentMap.shape.length; y++){
+        for(var x = 0; x < this.currentMap.shape[0].length; x++){
+            if(this.currentMap.shape[y][x]){
                 engine.context.fillStyle = "rgb(200,0,0)";
                 engine.context.fillRect (engine.screen.tilesX * x, engine.screen.tilesX * y, engine.screen.tilesX, engine.screen.tilesY);
             }
@@ -71,6 +72,6 @@ engine.map.draw = function(){
 
 engine.map.update = function(){
     
-    }
+}
 
 
