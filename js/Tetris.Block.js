@@ -14,6 +14,7 @@
  * @returns
  */
 Tetris.Block = function(shape, tileX, tileY){
+    var that = this;
     /** The x position of the block on the map in tiles
     * @type Number
     */
@@ -22,8 +23,6 @@ Tetris.Block = function(shape, tileX, tileY){
     * @type Number
     */
     this.tileY = tileY;
-    this.lastTileX = 0;
-    this.lastTileY = 0;
     /** 
     * The shape of the block in tiles
     * 
@@ -36,6 +35,30 @@ Tetris.Block = function(shape, tileX, tileY){
     * @type Array
     */
     this.shape = shape;
+    
+    this.update = function(){
+        
+    }
+    
+    /**
+   * Block rendering
+   *
+   * @return {void} 
+   */
+    this.draw = function(){
+        for(var y = 0; y < that.shape.length; y++){
+            for(var x = 0; x < that.shape[0].length; x++){
+                if(that.shape[y][x]){
+                    engine.context.fillStyle = "rgb(200,0,0)";
+                    engine.context.fillRect (
+                        engine.screen.tilesX * x + engine.screen.tilesX * that.tileX , 
+                        engine.screen.tilesX * y + engine.screen.tilesX * that.tileY, 
+                        engine.screen.tilesX, engine.screen.tilesY
+                        );
+                }
+            }
+        }
+    }
     
     /**
     * Turns the shape in given direction
@@ -80,23 +103,22 @@ Tetris.Block = function(shape, tileX, tileY){
         this.shape = newShape;
     }
     
- /**
- * Collision detection between a block and the map if the block is moving in x,y axis
- *
- * @param {Tetris.Block} block
- * @param {Tetris.Map} map
- * @param {integer} dTilesX check collision if block is moved dTilesX in x-Axis
- * @param {integer} dTilesY check collision if block is moved dTilesX in y-Axis
- * @returns boolean
- */
-    engine.player.collide = function(block, map, dTilesX, dTilesY){
-        for(var y = 0; y < block.shape.length; y++){
-            for(var x = 0; x < block.shape[0].length; x++){
-                if(block.shape[y][x]){
-                    var newTilePosX = block.tileX + x + dTilesX;
-                    var newTilePosY = block.tileY + y + dTilesY;
+    /**
+   * Collision detection between block and the map if the block is moving in x,y axis
+   *
+   * @param {Tetris.Map} map
+   * @param {integer} dTilesX check collision if block is moved dTilesX in x-Axis
+   * @param {integer} dTilesY check collision if block is moved dTilesX in y-Axis
+   * @returns boolean
+   */
+    this.collide = function(map, dTilesX, dTilesY){
+        for(var y = 0; y < that.shape.length; y++){
+            for(var x = 0; x < that.shape[0].length; x++){
+                if(that.shape[y][x]){
+                    var newTilePosX = that.tileX + x + dTilesX;
+                    var newTilePosY = that.tileY + y + dTilesY;
                     //collision border
-                    if(  newTilePosX >= map.shape[0].length || //collision right border
+                    if( newTilePosX >= map.shape[0].length || //collision right border
                         newTilePosX  < 0 || //collision left border
                         newTilePosY >= map.shape.length ){ //collision bottom border
                         return true;

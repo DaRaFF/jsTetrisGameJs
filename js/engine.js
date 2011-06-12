@@ -58,6 +58,7 @@ engine.loop = (function() {
 engine.draw = function(){
     engine.fallDownTimeLeft -= new Date - engine.lastTick;
     engine.lastTick = new Date;
+    engine.screen.draw();
     Tetris.game.draw();
 };
 

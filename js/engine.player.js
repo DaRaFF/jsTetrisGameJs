@@ -37,26 +37,6 @@ engine.player.move = function(direction){
 
 
 /**
- * Payer rendering
- *
- * @return {void} 
- */
-engine.player.draw = function(){
-    for(var y = 0; y < engine.player.currentStone.shape.length; y++){
-        for(var x = 0; x < engine.player.currentStone.shape[0].length; x++){
-            if(engine.player.currentStone.shape[y][x]){
-                engine.context.fillStyle = "rgb(200,0,0)";
-                engine.context.fillRect (
-                    engine.screen.tilesX * x + engine.screen.tilesX * engine.player.currentStone.tileX , 
-                    engine.screen.tilesX * y + engine.screen.tilesX * engine.player.currentStone.tileY, 
-                    engine.screen.tilesX, engine.screen.tilesY
-                    );
-            }
-        }
-    }
-}
-
-/**
  * Update Player logic
  *
  * @return {void} 

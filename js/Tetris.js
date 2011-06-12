@@ -9,7 +9,6 @@ var Tetris = {
  * @returns
  */
 Tetris = function(){
-    var that = this;
     this.map;
     this.player;
     
@@ -17,19 +16,19 @@ Tetris = function(){
     this.tileYStartPosition = 0;
     
     this.init = function(){
-        that.map = new Tetris.Map(16, 16);
-        that.map.init();
-        that.player = new Tetris.Player(that, that.map);
-        that.player.init();
+        this.map = new Tetris.Map(16, 16);
+        this.map.init();
+        this.player = new Tetris.Player(this, this.map);
+        this.player.init();
     }
     
     this.update= function(){
-        that.player.update();
+        this.player.update();
     }
     
     this.draw = function(){
-        that.map.draw();
-        that.player.draw();
+        this.map.draw();
+        this.player.draw();
     }
 
    /**
@@ -39,10 +38,10 @@ Tetris = function(){
    */
     this.createBlock = function(){
         var blockFactory = new Tetris.Block.Factory();
-        return blockFactory.create(Tetris.Block.Elements, that.tileXStartPosition, that.tileYStartPosition);
+        return blockFactory.create(Tetris.Block.Elements, this.tileXStartPosition, this.tileYStartPosition);
     }
     
-    that.init();
+    this.init();
 }
 
 

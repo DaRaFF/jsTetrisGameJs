@@ -7,14 +7,14 @@ engine.input.parseKeyboardInput = function(event){
         case command.DOWN:
             player.input = command.DOWN;
             break;
-        case tetris.command.LEFT:
-            engine.player.move(tetris.command.LEFT);
+        case command.LEFT:
+            player.input = command.LEFT;
             break;
-        case tetris.command.RIGHT:
-            engine.player.move(tetris.command.RIGHT);
+        case command.RIGHT:
+            player.input = command.RIGHT;
             break;
-        case tetris.command.TURN:
-            engine.player.move(tetris.command.TURN);
+        case command.TURN:
+            player.input = command.TURN;
             break;
     }
 };
