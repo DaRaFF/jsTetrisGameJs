@@ -11,7 +11,7 @@ Tetris.Map = function(tilesX, tilesY){
     this.tilesY = tilesY;
     this.shape = [[]];
     
-    var create = function(){
+    this.init = function(){
         for (var y = 0; y < that.tilesY ; y++) {
             that.shape[y] = [];
             for (var x = 0; x < that.tilesX; x++) {
@@ -20,7 +20,21 @@ Tetris.Map = function(tilesX, tilesY){
     
         }
     }
-    create();
+    
+    this.draw = function(){
+        for(var y = 0; y < that.shape.length; y++){
+            for(var x = 0; x < that.shape[0].length; x++){
+                if(that.shape[y][x]){
+                    engine.context.fillStyle = "rgb(200,0,0)";
+                    engine.context.fillRect (engine.screen.tilesX * x, engine.screen.tilesX * y, engine.screen.tilesX, engine.screen.tilesY);
+                }
+            }
+        }
+    }
+
+    this.update = function(){
+    
+    }    
 }
 
 

@@ -59,19 +59,4 @@ engine.map.reduceLines = function(){
     }
 }
 
-engine.map.draw = function(){
-    for(var y = 0; y < this.currentMap.shape.length; y++){
-        for(var x = 0; x < this.currentMap.shape[0].length; x++){
-            if(this.currentMap.shape[y][x]){
-                engine.context.fillStyle = "rgb(200,0,0)";
-                engine.context.fillRect (engine.screen.tilesX * x, engine.screen.tilesX * y, engine.screen.tilesX, engine.screen.tilesY);
-            }
-        }
-    }
-}
-
-engine.map.update = function(){
-    
-}
-
 

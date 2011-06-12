@@ -1,28 +1,48 @@
 var tetris = {};
-var Tetris = {};
+var Tetris = {
+    game: null
+};
 
 /**
  * Tetris Main
  *
- * @param {Array} shape The shape of the block in tiles
- * 
- * Example:
- * [ 
- *   [0,1,0],
- *   [0,1,0],
- *   [1,1,0],    
- * ]
- * @param {Tetris.Map} map
- * @param {Tetris.Player} player
  * @returns
  */
-Tetris = function(map, player){
-    this.map = map;
-    this.player = player;
+Tetris = function(){
+    var that = this;
+    this.map;
+    this.player;
     
-    this.isCollision = function(){
-        
+    this.tileXStartPosition = 7;
+    this.tileYStartPosition = 0;
+    
+    this.init = function(){
+        that.map = new Tetris.Map(16, 16);
+        that.map.init();
+        that.player = new Tetris.Player(that, that.map);
+        that.player.init();
     }
+    
+    this.update= function(){
+        that.player.update();
+    }
+    
+    this.draw = function(){
+        that.map.draw();
+        that.player.draw();
+    }
+
+   /**
+   * Create a new block
+   *
+   * @returns {Tetris.Block}
+   */
+    this.createBlock = function(){
+        var blockFactory = new Tetris.Block.Factory();
+        return blockFactory.create(Tetris.Block.Elements, that.tileXStartPosition, that.tileYStartPosition);
+    }
+    
+    that.init();
 }
 
 

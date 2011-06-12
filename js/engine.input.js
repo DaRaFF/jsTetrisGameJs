@@ -1,9 +1,11 @@
 engine.input = {};
 
 engine.input.parseKeyboardInput = function(event){
+    var command = Tetris.command;
+    var player = Tetris.game.player; 
     switch(event.keyCode){
-        case tetris.command.DOWN:
-            engine.player.move(tetris.command.DOWN);
+        case command.DOWN:
+            player.input = command.DOWN;
             break;
         case tetris.command.LEFT:
             engine.player.move(tetris.command.LEFT);
