@@ -1,14 +1,11 @@
 describe('Map', function () {
-    var currentStone = [];
-    var currentMap = [];
+    var block;
+    var map;
     beforeEach(function(){
-        currentStone = [
-        [0,1,0],
-        [0,1,0],
-        [1,1,0],
-        ];
-    
-        currentMap = [
+        var tilesX = 16, tilesY = 16;
+        map = new Tetris.Map(tilesX, tilesY);
+        
+        map.shape = [
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -26,13 +23,22 @@ describe('Map', function () {
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [1,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1]
         ];
+
+        var blockShape = 
+        [ // L
+        [0,1,0],
+        [0,1,0],
+        [1,1,0],    
+        ];
+        block = new Tetris.Block(blockShape, 0, 0);
+
         engine.screen.tileCountX = 16;
         engine.screen.tileCountY = 16;
     });
     
     describe('fix Stone in Map', function () {
         it('should be map = map + stone tiles 1', function () {
-            var newMap = [
+            var newMapShape = [
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -50,13 +56,15 @@ describe('Map', function () {
             [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
             [1,0,1,1,0,0,0,1,0,1,0,1,0,1,0,1]
             ];
-            engine.player.tileX = 2;
-            engine.player.tileY = 13;
-            engine.map.fixStone(currentStone, currentMap);
-            expect(newMap).toEqual(currentMap);
+            
+            block.tileX = 2;
+            block.tileY = 13;
+            
+            engine.map.fixStone(block, map);
+            expect(newMapShape).toEqual(map.shape);
         });
-        it('should be map = map + stone tiles 1', function () {
-            var newMap = [
+        it('should be map = map + stone tiles 2', function () {
+            var newMapShape = [
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -74,10 +82,10 @@ describe('Map', function () {
             [0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0],
             [1,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1]
             ];
-            engine.player.tileX = 6;
-            engine.player.tileY = 12;
-            engine.map.fixStone(currentStone, currentMap);
-            expect(newMap).toEqual(currentMap);
+            block.tileX = 6;
+            block.tileY = 12;
+            engine.map.fixStone(block, map);
+            expect(newMapShape).toEqual(map.shape);
         });
     });
     

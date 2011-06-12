@@ -1,38 +1,19 @@
-engine.map = {
-    currentMap:  [
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    ]
-};
+engine.map = {};
+engine.map.currentMap = new Tetris.Map(16, 16);
 
 /**
  * Fix a stone in the map
  *
- * @param {Array} currentStone
- * @param {Array} currentMap
+ * @param {Tetris.Block} block
+ * @param {Tetris.Map} map
  */
-engine.map.fixStone = function(currentStone, currentMap){
-    for(var y = 0; y < currentStone.length; y++){
-        for(var x = 0; x < currentStone[0].length; x++){
-            if(currentStone[y][x]){
-                var newTilePosX = engine.player.tileX + x;
-                var newTilePosY = engine.player.tileY + y;
-
-                currentMap[newTilePosY][newTilePosX] = 1;
+engine.map.fixStone = function(block, map){
+    for(var y = 0; y < block.shape.length; y++){
+        for(var x = 0; x < block.shape[0].length; x++){
+            if(block.shape[y][x]){
+                var newTilePosX = block.tileX + x;
+                var newTilePosY = block.tileY + y;
+                map.shape[newTilePosY][newTilePosX] = 1;
             }
         }
     }

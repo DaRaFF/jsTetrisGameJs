@@ -49,28 +49,28 @@ engine.player.move = function(direction){
 
 
 /**
- * Collision detection between a stone and the map if the stone is moving in x,y axis
+ * Collision detection between a block and the map if the block is moving in x,y axis
  *
- * @param {Tetris.Block} currentBlock
- * @param {Array} currentMap
- * @param {integer} dTilesX check collision if currentStone is moved dTilesX in x-Axis
- * @param {integer} dTilesY check collision if currentStone is moved dTilesX in y-Axis
+ * @param {Tetris.Block} block
+ * @param {Tetris.Map} map
+ * @param {integer} dTilesX check collision if block is moved dTilesX in x-Axis
+ * @param {integer} dTilesY check collision if block is moved dTilesX in y-Axis
  * @returns boolean
  */
-engine.player.collide = function(currentBlock, currentMap, dTilesX, dTilesY){
-    for(var y = 0; y < currentBlock.shape.length; y++){
-        for(var x = 0; x < currentBlock.shape[0].length; x++){
-            if(currentBlock.shape[y][x]){
-                var newTilePosX = this.tileX + x + dTilesX;
-                var newTilePosY = this.tileY + y + dTilesY;
+engine.player.collide = function(block, map, dTilesX, dTilesY){
+    for(var y = 0; y < block.shape.length; y++){
+        for(var x = 0; x < block.shape[0].length; x++){
+            if(block.shape[y][x]){
+                var newTilePosX = block.tileX + x + dTilesX;
+                var newTilePosY = block.tileY + y + dTilesY;
                 //collision border
-                if(  newTilePosX >= currentMap[0].length || //collision right border
+                if(  newTilePosX >= map.shape[0].length || //collision right border
                     newTilePosX  < 0 || //collision left border
-                    newTilePosY >= currentMap.length ){ //collision bottom border
+                    newTilePosY >= map.shape.length ){ //collision bottom border
                     return true;
                 }
                 //collision check horizontal with map
-                if(currentMap[newTilePosY][newTilePosX]){
+                if(map.shape[newTilePosY][newTilePosX]){
                     return true;
                 }
             }
