@@ -22,9 +22,7 @@ Tetris.Player = function(game, map){
     }
     
     this.update = function(){
-        console.log(this);
         switch(this.input){
-        
             case Tetris.command.RIGHT:
                 if(!this.currentBlock.collide(this.map, 1, 0)){
                     this.currentBlock.tileX++;
@@ -37,7 +35,7 @@ Tetris.Player = function(game, map){
                 break;
             case Tetris.command.DOWN:
                 if(this.currentBlock.collide(this.map, 0, 1)){
-                    //                    this.map.fixStone(engine.player.currentStone, currentMap);
+                    this.map.fixStone(engine.player.currentStone, currentMap);
                     //                    this.map.reduceLines();
                     this.currentBlock = this.nextBlock;
                     this.nextBlock = this.game.createBlock();
@@ -57,7 +55,7 @@ Tetris.Player = function(game, map){
     }
     
     this.draw = function(){
-       this.currentBlock.draw(); 
+        this.currentBlock.draw(); 
     }
 }
 
