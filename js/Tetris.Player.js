@@ -35,8 +35,8 @@ Tetris.Player = function(game, map){
                 break;
             case Tetris.command.DOWN:
                 if(this.currentBlock.collide(this.map, 0, 1)){
-                    this.map.fixStone(engine.player.currentStone, currentMap);
-                    //                    this.map.reduceLines();
+                    this.map.fixStone(this.currentBlock, this.map);
+                    this.map.reduceLines();
                     this.currentBlock = this.nextBlock;
                     this.nextBlock = this.game.createBlock();
                 }

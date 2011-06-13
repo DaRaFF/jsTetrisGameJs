@@ -40,7 +40,7 @@ Tetris.Map = function(tilesX, tilesY){
    *
    * @param {Tetris.Block} block
    */
-    engine.map.fixStone = function(block){
+    this.fixStone = function(block){
         for(var y = 0; y < block.shape.length; y++){
             for(var x = 0; x < block.shape[0].length; x++){
                 if(block.shape[y][x]){
@@ -58,9 +58,9 @@ Tetris.Map = function(tilesX, tilesY){
    * @param {integer} tileYPos row in map to check (0 - tileCountY)
    * @return {boolean}
    */
-    engine.map.rowFull = function(tileYPos){
-        for(var x = 0; x < this.currentMap[0].length; x++){
-            if(!this.currentMap[tileYPos][x]){
+    this.rowFull = function(tileYPos){
+        for(var x = 0; x < this.shape[0].length; x++){
+            if(!this.shape[tileYPos][x]){
                 return false;
             }
         }
@@ -73,8 +73,8 @@ Tetris.Map = function(tilesX, tilesY){
    * @param {integer} row in map (0 - tileCountY)
    * @return {void}
    */
-    engine.map.rowDelete = function(tileYPos){
-        this.currentMap.splice(tileYPos,1);
+    this.rowDelete = function(tileYPos){
+        this.shape.splice(tileYPos,1);
     }
 
     /**
@@ -82,11 +82,11 @@ Tetris.Map = function(tilesX, tilesY){
    *
    * @return {void}
    */
-    engine.map.reduceLines = function(){
-        for(var y = 0; y < this.currentMap.length; y++){
+    this.reduceLines = function(){
+        for(var y = 0; y < this.shape.length; y++){
             if(this.rowFull(y)){
                 this.rowDelete(y);
-                this.currentMap.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                this.shape.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
             }
         }
     }
