@@ -1,20 +1,20 @@
 engine.input = {};
 
 engine.input.parseKeyboardInput = function(event){
-    var command = Tetris.command;
-    var player = Tetris.game.player; 
+    var command = engine.config.inputCommands;
+    var callback = engine.config.inputCallback; 
     switch(event.keyCode){
         case command.DOWN:
-            player.input = command.DOWN;
+            callback.input = command.DOWN;
             break;
         case command.LEFT:
-            player.input = command.LEFT;
+            callback.input = command.LEFT;
             break;
         case command.RIGHT:
-            player.input = command.RIGHT;
+            callback.input = command.RIGHT;
             break;
         case command.TURN:
-            player.input = command.TURN;
+            callback.input = command.TURN;
             break;
     }
 };

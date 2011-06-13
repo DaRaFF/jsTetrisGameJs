@@ -11,6 +11,7 @@ var Tetris = {
 Tetris = function(){
     this.map;
     this.player;
+    this.timer;
     
     this.tileXStartPosition = 7;
     this.tileYStartPosition = 0;
@@ -20,9 +21,13 @@ Tetris = function(){
         this.map.init();
         this.player = new Tetris.Player(this, this.map);
         this.player.init();
+        this.timer = new Tetris.Timer(this, 1000, function(game){
+            game.player.input = Tetris.command.DOWN
+        });
     }
     
     this.update= function(){
+        this.timer.update();
         this.player.update();
     }
     
