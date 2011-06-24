@@ -37,28 +37,28 @@ describe('Player', function () {
         it('should return true if collided at right border', function () {
             block.tileX = 14;
             block.tileY = 0;
-            var collided = engine.player.collide(block, map, 1,0);
+            var collided = block.collide(map, 1,0);
             expect(collided).toBeTruthy();
         });
 
         it('should return true if colliding in the map 1', function () {
             block.tileX = 2;
             block.tileY = 6;
-            var collided = engine.player.collide(block, map, 1,0);
+            var collided = block.collide(map, 1,0);
             expect(collided).toBeTruthy();
         });
 
         it('should return true if colliding in the map 2', function () {
             block.tileX = 2;
             block.tileY = 3;
-            var collided = engine.player.collide(block, map, 1,0);
+            var collided = block.collide(map, 1,0);
             expect(collided).toBeTruthy();
         });
 
         it('should return false if not colliding', function () {
             block.tileX = 1;
             block.tileY = 0;
-            var collided = engine.player.collide(block, map, 1,0);
+            var collided = block.collide(map, 1,0);
             expect(collided).toBeFalsy();
         });
     });
@@ -67,28 +67,28 @@ describe('Player', function () {
         it('should return true if collided at left border', function () {
             block.tileX = 0;
             block.tileY = 0;
-            var collided = engine.player.collide(block, map, -1,0);
+            var collided = block.collide(map, -1,0);
             expect(collided).toBeTruthy();
         });
 
         it('should return true if colliding in the map 1', function () {
-            engine.player.tileX = 5;
-            engine.player.tileY = 3;
-            var collided = engine.player.collide(block, map, -1,0);
+            block.tileX = 5;
+            block.tileY = 3;
+            var collided = block.collide(map, -1,0);
             expect(collided).toBeTruthy();
         });
 
         it('should return true if colliding in the map 2', function () {
             block.tileX = 4;
             block.tileY = 6;
-            var collided = engine.player.collide(block, map, -1,0);
+            var collided = block.collide(map, -1,0);
             expect(collided).toBeTruthy();
         });
 
         it('should return false if not colliding', function () {
             block.tileX = 1;
             block.tileY = 0;
-            var collided = engine.player.collide(block, map, -1,0);
+            var collided = block.collide(map, -1,0);
             expect(collided).toBeFalsy();
         });
     });
@@ -97,28 +97,28 @@ describe('Player', function () {
         it('should return true if collided at bottom border', function () {
             block.tileX = 0;
             block.tileY = 15;
-            var collided = engine.player.collide(block, map, 0, 1);
+            var collided = block.collide(map, 0, 1);
             expect(collided).toBeTruthy();
         });
 
         it('should return true if colliding in the map 1', function () {
             block.tileX = 0;
             block.tileY = 14;
-            var collided = engine.player.collide(block, map, 0, 1);
+            var collided = block.collide(map, 0, 1);
             expect(collided).toBeTruthy();
         });
 
         it('should return true if colliding in the map 2', function () {
             block.tileX = 6;
             block.tileY = 14;
-            var collided = engine.player.collide(block, map, 0, 1);
+            var collided = block.collide(map, 0, 1);
             expect(collided).toBeTruthy();
         });
 
         it('should return false if not colliding', function () {
             block.tileX = 6;
             block.tileY = 0;
-            var collided = engine.player.collide(block, map, 0, 1);
+            var collided = block.collide(map, 0, 1);
             expect(collided).toBeFalsy();
         });
     });
