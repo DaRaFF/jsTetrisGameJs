@@ -1,20 +1,18 @@
 engine.input = {};
 
 engine.input.parseKeyboardInput = function(event){
-    var command = engine.config.inputCommands;
-    var callback = engine.config.inputCallback; 
     switch(event.keyCode){
-        case command.DOWN:
-            callback.input = command.DOWN;
+        case Tetris.command.DOWN:
+            Tetris.game.player.input = Tetris.command.DOWN;
             break;
-        case command.LEFT:
-            callback.input = command.LEFT;
+        case Tetris.command.LEFT:
+            Tetris.game.player.input = Tetris.command.LEFT;
             break;
-        case command.RIGHT:
-            callback.input = command.RIGHT;
+        case Tetris.command.RIGHT:
+            Tetris.game.player.input = Tetris.command.RIGHT;
             break;
-        case command.TURN:
-            callback.input = command.TURN;
+        case Tetris.command.TURN:
+            Tetris.game.player.input = Tetris.command.TURN;
             break;
     }
 };
@@ -22,18 +20,18 @@ engine.input.parseKeyboardInput = function(event){
 engine.input.parseTouchInput = function(event){
     var touch = event.touches[0];
     if( engine.getInnerHeight() * 2 / 3 <= touch.pageY){
-        engine.player.move('down');
+        Tetris.game.player.input = Tetris.command.DOWN;
         return;
     }
     if( engine.getInnerWidth() * 1 / 3 >= touch.pageX){
-        engine.player.move('left');
+        Tetris.game.player.input = Tetris.command.LEFT;
         return;
     }
     if( engine.getInnerWidth() * 1 / 3 <= touch.pageX && engine.getInnerWidth() * 2 / 3 >= touch.pageX){
-        engine.player.move('turn');
+        Tetris.game.player.input = Tetris.command.TURN;
         return;
     }
-    engine.player.move('right');
+    Tetris.game.player.input = Tetris.command.RIGHT;
 };
 
 

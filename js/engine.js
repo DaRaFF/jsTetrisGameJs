@@ -12,8 +12,6 @@ var engine = {
 }
 
 engine.config = {
-    inputCommands: Tetris.command,
-    inputCallback: null, //Tetris.game.player - call inputCallback.input
     fps: 60
 }
 
@@ -27,7 +25,6 @@ engine.context = engine.canvas.getContext('2d');
 
 engine.start = function(){
     Tetris.game = new Tetris();
-    engine.config.inputCallback = Tetris.game.player;
     engine.screen.init();
     engine.context.translate( 0, 0 );
     engine._intervalId = setInterval(engine.loop, 0);
