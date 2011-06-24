@@ -1,16 +1,7 @@
 var gamejs = require('gamejs');
-//require('Tetris');
-require('Tetris.Timer');
-//require('Tetris.Player');
-//require('Tetris.Block');
-//require('Tetris.Block.Elements');
-//require('Tetris.Block.Factory');
-//require('Tetris.Map');
-//require('Tetris.command');
-//require('engine');
-//require('engine.loop');
-//require('engine.input');
-//require('engine.screen');
+
+var Tetris = require('Tetris').Tetris;
+
 
 var SCREEN_WIDTH = 400;
 var SCREEN_HEIGHT = 400;
@@ -47,7 +38,7 @@ function main() {
     // ball in screen center.
     // start game loop.
     var display = gamejs.display.setMode([SCREEN_WIDTH, SCREEN_HEIGHT]);
-    //Tetris.game = new Tetris();
+    Tetris.game = new Tetris();
     gamejs.time.fpsCallback(gameTick, this, 30);
 };
 

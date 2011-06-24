@@ -1,3 +1,9 @@
+var Map = require('Tetris.Map').Map;
+var Player = require('Tetris.Player').Player;
+var BlockFactory = require('Tetris.Block.Factory').BlockFactory;
+var BlockElements = require('Tetris.Block.Elements').BlockElements;
+var Timer = require('Tetris.Timer').Timer;
+
 var tetris = {};
 var Tetris = {
     game: null
@@ -8,7 +14,7 @@ var Tetris = {
  *
  * @returns
  */
-Tetris = function(){
+var Tetris = function(){
     this.map;
     this.player;
     this.timer;
@@ -17,11 +23,11 @@ Tetris = function(){
     this.tileYStartPosition = 0;
     
     this.init = function(){
-        this.map = new Tetris.Map(16, 16);
+        this.map = new Map(16, 16);
         this.map.init();
-        this.player = new Tetris.Player(this, this.map);
+        this.player = new Player(this, this.map);
         this.player.init();
-        this.timer = new Tetris.Timer(this, 1000, function(game){
+        this.timer = new Timer(this, 1000, function(game){
             game.player.input = Tetris.command.DOWN
         });
     }
@@ -42,13 +48,14 @@ Tetris = function(){
    * @returns {Tetris.Block}
    */
     this.createBlock = function(){
-        var blockFactory = new Tetris.Block.Factory();
-        return blockFactory.create(Tetris.Block.Elements, this.tileXStartPosition, this.tileYStartPosition);
+        var blockFactory = new BlockFactory();
+        return blockFactory.create(BlockElements, this.tileXStartPosition, this.tileYStartPosition);
     }
     
     this.init();
 }
-//test
+
+exports.Tetris = Tetris;
 
 
 

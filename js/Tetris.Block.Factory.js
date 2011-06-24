@@ -1,9 +1,11 @@
+var Block = require('Tetris.Block').Block;
+
 /**
 * Factory for Block creation
 *
 * @return
 */
-Tetris.Block.Factory = function (){
+var BlockFactory = function (){
     
     /**
     * Factory for Block creation
@@ -16,8 +18,10 @@ Tetris.Block.Factory = function (){
     */
     this.create = function(shapes, tileX, tileY){
         var randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-        return new Tetris.Block(randomShape, tileX, tileY);
+        return new Block(randomShape, tileX, tileY);
     }
 }
+
+exports.BlockFactory = BlockFactory;
 
 

@@ -1,4 +1,4 @@
-Tetris.Block.Elements = [
+var BlockElements = [
     [ // J
     [0,1,0],
     [0,1,0],
@@ -35,5 +35,7 @@ Tetris.Block.Elements = [
     [0,1,0,0],    
     ],
     ];
+    
+exports.BlockElements = BlockElements;
 
 

@@ -13,7 +13,7 @@
  * @param {Number} tileY
  * @returns
  */
-Tetris.Block = function(shape, tileX, tileY){
+var Block = function(shape, tileX, tileY){
     var that = this;
     /** The x position of the block on the map in tiles
     * @type Number
@@ -134,3 +134,5 @@ Tetris.Block = function(shape, tileX, tileY){
         return false;
     }
 }
+
+exports.Block = Block;

@@ -6,7 +6,7 @@
  *
  * @returns
  */
-Tetris.Player = function(game, map){
+var Player = function(game, map){
     this.game = game;
     this.map = map;
     this.currentBlock;
@@ -58,5 +58,7 @@ Tetris.Player = function(game, map){
         this.currentBlock.draw(); 
     }
 }
+
+exports.Player = Player;
 
 

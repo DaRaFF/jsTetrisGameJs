@@ -5,7 +5,7 @@
  * @param {Number} tilesY number of tiles in y direction
  * @returns
  */
-Tetris.Map = function(tilesX, tilesY){
+var Map = function(tilesX, tilesY){
     this.tilesX = tilesX;
     this.tilesY = tilesY;
     this.shape = [[]];
@@ -91,5 +91,7 @@ Tetris.Map = function(tilesX, tilesY){
         }
     }
 }
+
+exports.Map = Map;
 
 
