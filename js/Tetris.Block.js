@@ -58,6 +58,7 @@ Tetris.Block = function(shape, tileX, tileY){
                 }
             }
         }
+        //gamejs.draw.circle(display, '#ff0000', [20,20], 20, 0);
     }
     
     /**

@@ -4,21 +4,14 @@
         <title>Tetris Engine</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
         <meta name = "viewport" content = "user-scalable=no, width=device-width">
-        <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script> 
         <script type="text/javascript">
 
             /* This code prevents users from dragging the page */
-            var preventDefaultScroll = function(event) {
-                event.preventDefault();
-                window.scroll(0,0);
-                return false;
-            };
-
-            /* This code is used to run as soon as appMobi activates */
-            var onDeviceReady=function(){
-                //Size the display to 768px by 1024px
-                AppMobi.display.useViewport(screen.width,screen.width);
-            };
+//            var preventDefaultScroll = function(event) {
+//                event.preventDefault();
+//                window.scroll(0,0);
+//                return false;
+//            };
         </script>
 
     </head>
@@ -32,32 +25,25 @@
                     <p id="time">Time: <span></span></p>
                 </div>-->
         <canvas id='canvas'></canvas>
-        <script src='lib/Stats.js'></script>
-        <script src='js/Tetris.js'></script>
-        <script src='js/Tetris.Timer.js'></script>
-        <script src='js/Tetris.Player.js'></script>
-        <script src='js/Tetris.Block.js'></script>
-        <script src='js/Tetris.Block.Elements.js'></script>
-        <script src='js/Tetris.Block.Factory.js'></script>
-        <script src='js/Tetris.Map.js'></script>
-        <script src='js/Tetris.command.js'></script>
-        <script src='js/engine.js'></script>
-        <script src='js/engine.loop.js'></script>
-        <script src='js/engine.stats.js'></script>
-        <script src='js/engine.input.js'></script>
-        <script src='js/engine.screen.js'></script>
+        
+        <img id="gjs-loader" src="lib/gamejs/ajax-loader.gif">
+        <canvas id="gjs-canvas"></canvas>
+        
+        <script src="lib/gamejs/yabble.js"></script>
+        <script src="lib/gamejs/gamejs-wrapped.js"></script>
         <link rel='stylesheet' href='style.css' media='all' />
         <script>
             //mobile
-            document.addEventListener("appMobi.device.ready",onDeviceReady,false);
-            document.addEventListener('touchmove', preventDefaultScroll, false);
-            window.addEventListener('touchstart', engine.input.parseTouchInput, false);  
-            //keyboard
-            window.addEventListener('keydown', engine.input.parseKeyboardInput, false);
-            //start
-            window.addEventListener('load', function(){
-                engine.start();
-            }, false);
+//            document.addEventListener('touchmove', preventDefaultScroll, false);
+//            window.addEventListener('touchstart', engine.input.parseTouchInput, false);  
+//            //keyboard
+//            window.addEventListener('keydown', engine.input.parseKeyboardInput, false);
+//            //start
+//            window.addEventListener('load', function(){
+//                engine.start();
+//            }, false);
+            require.setModuleRoot('js/');
+            require.run('main');
         </script>
     </body>
 </html>

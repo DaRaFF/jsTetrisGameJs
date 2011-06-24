@@ -1,3 +1,5 @@
+var Tetris = {};
+
 Tetris.Timer = function(game, fallDownTime, callback){
     this.game = game;
     this.lastTick = new Date;
