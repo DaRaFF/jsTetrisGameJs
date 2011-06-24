@@ -1,7 +1,4 @@
 var engine = {
-    outhnd: document.getElementById('output'),
-    context: null,
-    lastTick: new Date,
     getWidth: function(realWidth, realHeight){
         var smaller  = Math.min(realWidth,realHeight);
         return (smaller > 1024 ? 1024 : smaller);
@@ -24,8 +21,8 @@ engine.canvas = {
     width: engine.getWidth(),
     height: engine.getWidth()
 };
-engine.canvas = document.getElementById('canvas');
 
+engine.canvas = document.getElementById('canvas');
 engine.context = engine.canvas.getContext('2d');
 
 engine.start = function(){

@@ -10,6 +10,7 @@ describe('Tetris.Map', function () {
             ];
             
             var map = new Tetris.Map(4, 5);
+            map.init();
             expect(expectedMap).toEqual(map.shape);
         });
     });
