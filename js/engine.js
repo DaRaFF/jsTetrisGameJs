@@ -9,11 +9,11 @@ var engine = {
     getInnerWidth: function(){
         return window.innerWidth;
     }
-}
+};
 
 engine.config = {
     fps: 60
-}
+};
 
 engine.canvas = {
     width: engine.getWidth(),
@@ -41,4 +41,4 @@ engine.update = function(){
         engine.screen.init();
     }
     Tetris.game.update();
-}
+};
