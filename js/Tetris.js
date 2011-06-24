@@ -18,6 +18,7 @@ var Tetris = function(){
     this.map;
     this.player;
     this.timer;
+    this.screen;
     
     this.tileXStartPosition = 7;
     this.tileYStartPosition = 0;

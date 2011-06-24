@@ -1,3 +1,6 @@
+var gamejs = require('gamejs');
+var screen = require('Tetris/screen').screen;
+
 /**
  * Block
  *
@@ -49,16 +52,17 @@ var Block = function(shape, tileX, tileY){
         for(var y = 0; y < that.shape.length; y++){
             for(var x = 0; x < that.shape[0].length; x++){
                 if(that.shape[y][x]){
-                    engine.context.fillStyle = "rgb(200,0,0)";
-                    engine.context.fillRect (
-                        engine.screen.tilesX * x + engine.screen.tilesX * that.tileX , 
-                        engine.screen.tilesX * y + engine.screen.tilesX * that.tileY, 
-                        engine.screen.tilesX, engine.screen.tilesY
-                        );
+                    var display = gamejs.display.getSurface();
+                    var rect = new gamejs.Rect(
+                        screen.tilesX * x + screen.tilesX * that.tileX, 
+                        screen.tilesY * y + screen.tilesY * that.tileY, 
+                        screen.tilesX, 
+                        screen.tilesY
+                    );
+                    gamejs.draw.rect(display, '#ff0000', rect, 0);
                 }
             }
         }
-        //gamejs.draw.circle(display, '#ff0000', [20,20], 20, 0);
     }
     
     /**
