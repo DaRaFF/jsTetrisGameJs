@@ -4,16 +4,6 @@
         <title>Tetris Engine</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
         <meta name = "viewport" content = "user-scalable=no, width=device-width">
-        <script type="text/javascript">
-
-            /* This code prevents users from dragging the page */
-            //            var preventDefaultScroll = function(event) {
-            //                event.preventDefault();
-            //                window.scroll(0,0);
-            //                return false;
-            //            };
-        </script>
-
     </head>
     <body>
 
@@ -31,9 +21,6 @@
         <script src="lib/gamejs/gamejs-wrapped.js"></script>
         <link rel='stylesheet' href='style.css' media='all' />
         <script>
-            //mobile
-            //document.addEventListener('touchmove', preventDefaultScroll, false);
-            //window.addEventListener('touchstart', engine.input.parseTouchInput, false);  
             require.setModuleRoot('js/');
             require.run('main');
         </script>
