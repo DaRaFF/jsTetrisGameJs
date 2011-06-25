@@ -23,17 +23,17 @@ var Player = function(game, map){
     
     this.update = function(){
         switch(this.input){
-            case Tetris.command.RIGHT:
+            case "RIGHT":
                 if(!this.currentBlock.collide(this.map, 1, 0)){
                     this.currentBlock.tileX++;
                 }
                 break;
-            case Tetris.command.LEFT:
+            case "LEFT":
                 if(!this.currentBlock.collide(this.map, -1, 0)){
                     this.currentBlock.tileX--;
                 }
                 break;
-            case Tetris.command.DOWN:
+            case "DOWN":
                 if(this.currentBlock.collide(this.map, 0, 1)){
                     this.map.fixStone(this.currentBlock, this.map);
                     this.map.reduceLines();
@@ -42,7 +42,7 @@ var Player = function(game, map){
                 }
                 this.currentBlock.tileY++;
                 break;
-            case Tetris.command.TURN:
+            case "TURN":
                 this.currentBlock.turn('right');
                 if(this.currentBlock.collide(this.map, 0, 0)){
                     this.currentBlock.turn('left');

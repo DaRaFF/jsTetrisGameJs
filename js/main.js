@@ -10,29 +10,32 @@ function main() {
 
     function handleEvent(event) {
         switch(event.type) {
-            case gamejs.event.MOUSE_UP:
+            case gamejs.event.K_UP:
+                Tetris.player.input = "TURN";
+                break;
+            case gamejs.event.K_DOWN:
+                Tetris.player.input = "DOWN";
+                break;
+            case gamejs.event.K_RIGHT:
+                Tetris.player.input = "RIGHT";
+                break;
+            case gamejs.event.K_LEFT:
+                Tetris.player.input = "LEFT";
                 break;
         };
     };
 
-    // handle events.
-    // update models.
-    // clear screen.
-    // draw screen.
-    // called ~ 30 times per second by fps.callback
-    // msDuration = actual time in milliseconds since last call
+    // game loop
     function gameTick(msDuration) {
         gamejs.event.get().forEach(function(event) {
             handleEvent(event);
         });
         screen.update();
-        //Tetris.game.update();
+        Tetris.game.update();
         
         display.clear();
         
         Tetris.game.draw();
-//        gamejs.draw.circle(display, '#ff0000', [20,20], 20, 0);
-//        gamejs.draw.rect (surface, color, rect, width);
     };
 
     // start game loop.

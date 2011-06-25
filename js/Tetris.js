@@ -29,7 +29,7 @@ var Tetris = function(){
         this.player = new Player(this, this.map);
         this.player.init();
         this.timer = new Timer(this, 1000, function(game){
-            game.player.input = Tetris.command.DOWN
+            game.player.input = "DOWN";
         });
     }
     
