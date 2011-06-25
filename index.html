@@ -7,11 +7,11 @@
         <script type="text/javascript">
 
             /* This code prevents users from dragging the page */
-//            var preventDefaultScroll = function(event) {
-//                event.preventDefault();
-//                window.scroll(0,0);
-//                return false;
-//            };
+            //            var preventDefaultScroll = function(event) {
+            //                event.preventDefault();
+            //                window.scroll(0,0);
+            //                return false;
+            //            };
         </script>
 
     </head>
@@ -24,24 +24,16 @@
                     <p id="score">Score: <span></span></p>
                     <p id="time">Time: <span></span></p>
                 </div>-->
-        <canvas id='canvas'></canvas>
-        
         <img id="gjs-loader" src="lib/gamejs/ajax-loader.gif">
         <canvas id="gjs-canvas"></canvas>
-        
+
         <script src="lib/gamejs/yabble.js"></script>
         <script src="lib/gamejs/gamejs-wrapped.js"></script>
         <link rel='stylesheet' href='style.css' media='all' />
         <script>
             //mobile
-//            document.addEventListener('touchmove', preventDefaultScroll, false);
-//            window.addEventListener('touchstart', engine.input.parseTouchInput, false);  
-//            //keyboard
-//            window.addEventListener('keydown', engine.input.parseKeyboardInput, false);
-//            //start
-//            window.addEventListener('load', function(){
-//                engine.start();
-//            }, false);
+            //document.addEventListener('touchmove', preventDefaultScroll, false);
+            //window.addEventListener('touchstart', engine.input.parseTouchInput, false);  
             require.setModuleRoot('js/');
             require.run('main');
         </script>

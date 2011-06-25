@@ -6,7 +6,7 @@ body{
     overflow: hidden;
 }
 
-canvas#canvas, canvas#gjs-canvas{
+canvas#gjs-canvas{
     border: 1px dotted #f06;
     margin-left: 0px;
 }
