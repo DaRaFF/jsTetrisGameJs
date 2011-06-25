@@ -1,6 +1,6 @@
 var gamejs = require('gamejs');
 var screen = require('Tetris/screen').screen;
-var Tetris = require('Tetris').Tetris;
+var Tetris = require('Tetris/Tetris').Tetris;
 
 
 var SCREEN_WIDTH = 400;

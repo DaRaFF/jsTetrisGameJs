@@ -47,7 +47,7 @@ var Map = function(tilesX, tilesY){
     /**
    * Fixes a block in the map
    *
-   * @param {Tetris.Block} block
+   * @param {Block} block
    */
     this.fixStone = function(block){
         for(var y = 0; y < block.shape.length; y++){

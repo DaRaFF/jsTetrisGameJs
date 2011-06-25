@@ -1,8 +1,8 @@
-var Map = require('Tetris.Map').Map;
-var Player = require('Tetris.Player').Player;
-var BlockFactory = require('Tetris.Block.Factory').BlockFactory;
-var BlockElements = require('Tetris.Block.Elements').BlockElements;
-var Timer = require('Tetris.Timer').Timer;
+var Map = require('Tetris/Map').Map;
+var Player = require('Tetris/Player').Player;
+var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
+var BlockElements = require('Tetris/BlockElements').BlockElements;
+var Timer = require('Tetris/Timer').Timer;
 
 var tetris = {};
 var Tetris = {
@@ -46,7 +46,7 @@ var Tetris = function(){
    /**
    * Create a new block
    *
-   * @returns {Tetris.Block}
+   * @returns {Block}
    */
     this.createBlock = function(){
         var blockFactory = new BlockFactory();

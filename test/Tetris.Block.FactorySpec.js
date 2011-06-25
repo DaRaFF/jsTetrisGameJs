@@ -1,4 +1,4 @@
-describe('Tetris.Block.Factory', function () {
+describe('BlockFactory', function () {
     describe('create', function () {
         it('should return a L Block', function () {
             var shapes = [
@@ -12,10 +12,10 @@ describe('Tetris.Block.Factory', function () {
             var tileX = 11;
             var tileY = 22;
             
-            var blockFactory = new Tetris.Block.Factory();
+            var blockFactory = new BlockFactory();
             var block = blockFactory.create(shapes, tileX, tileY);
             
-            var epectedBlock = new Tetris.Block(shapes[0], tileX, tileY);
+            var epectedBlock = new Block(shapes[0], tileX, tileY);
             
             expect(block.shape).toEqual(epectedBlock.shape);
             expect(block.tileX).toEqual(epectedBlock.tileX);

@@ -1,9 +1,9 @@
-describe('Tetris.Map', function () {
+describe('Tetris/Map', function () {
     var block;
     var map;
     beforeEach(function(){
         var tilesX = 16, tilesY = 16;
-        map = new Tetris.Map(tilesX, tilesY);
+        map = new Map(tilesX, tilesY);
         
         map.shape = [
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -235,7 +235,7 @@ describe('Tetris.Map', function () {
             [0,0,0,0]
             ];
             
-            var map = new Tetris.Map(4, 5);
+            var map = new Map(4, 5);
             map.init();
             expect(expectedMap).toEqual(map.shape);
         });

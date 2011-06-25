@@ -29,7 +29,7 @@ describe('Player', function () {
         [1,0,0,0,0,0,0,1,0,1,0,1,0,1,0,1]
         ];
         block = new Tetris.Block(blockShape, 0, 0);
-        map = new Tetris.Map(16, 16);
+        map = new Map(16, 16);
         map.shape = mapShape;
     });
     

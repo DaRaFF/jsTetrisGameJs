@@ -2,7 +2,7 @@
  * Player
  * 
  * @param {Tetris} game The game
- * @param {Tetris.Map} map
+ * @param {Map} map
  *
  * @returns
  */

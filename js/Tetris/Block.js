@@ -111,7 +111,7 @@ var Block = function(shape, tileX, tileY){
     /**
    * Collision detection between block and the map if the block is moving in x,y axis
    *
-   * @param {Tetris.Map} map
+   * @param {Map} map
    * @param {integer} dTilesX check collision if block is moved dTilesX in x-Axis
    * @param {integer} dTilesY check collision if block is moved dTilesX in y-Axis
    * @returns boolean
