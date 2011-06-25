@@ -9,18 +9,18 @@ var SCREEN_HEIGHT = 400;
 function main() {
 
     function handleEvent(event) {
-        switch(event.type) {
+        switch(event.key) {
             case gamejs.event.K_UP:
-                Tetris.player.input = "TURN";
+                Tetris.game.player.input = "TURN";
                 break;
             case gamejs.event.K_DOWN:
-                Tetris.player.input = "DOWN";
+                Tetris.game.player.input = "DOWN";
                 break;
             case gamejs.event.K_RIGHT:
-                Tetris.player.input = "RIGHT";
+                Tetris.game.player.input = "RIGHT";
                 break;
             case gamejs.event.K_LEFT:
-                Tetris.player.input = "LEFT";
+                Tetris.game.player.input = "LEFT";
                 break;
         };
     };

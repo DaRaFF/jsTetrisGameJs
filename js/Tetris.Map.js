@@ -1,3 +1,6 @@
+var gamejs = require('gamejs');
+var screen = require('Tetris/screen').screen;
+
 /**
  * Map
  *
@@ -24,8 +27,14 @@ var Map = function(tilesX, tilesY){
         for(var y = 0; y < this.shape.length; y++){
             for(var x = 0; x < this.shape[0].length; x++){
                 if(this.shape[y][x]){
-                    engine.context.fillStyle = "rgb(200,0,0)";
-                    engine.context.fillRect (engine.screen.tilesX * x, engine.screen.tilesX * y, engine.screen.tilesX, engine.screen.tilesY);
+                    var display = gamejs.display.getSurface();
+                    var rect = new gamejs.Rect(
+                        screen.tilesX * x, 
+                        screen.tilesX * y, 
+                        screen.tilesX, 
+                        screen.tilesY
+                        );
+                    gamejs.draw.rect(display, '#ff0000', rect, 0);
                 }
             }
         }
