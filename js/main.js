@@ -7,7 +7,7 @@ var SCREEN_WIDTH = 400;
 var SCREEN_HEIGHT = 400;
 
 function main() {
-
+    //handle input
     function handleEvent(event) {
         switch(event.key) {
             case gamejs.event.K_UP:
@@ -21,6 +21,23 @@ function main() {
                 break;
             case gamejs.event.K_LEFT:
                 Tetris.game.player.input = "LEFT";
+                break;
+            default:
+                if(event.type === gamejs.event.TOUCH_START){
+                    if( screen.getInnerHeight() * 2 / 3 <= event.pos[1]){
+                        Tetris.game.player.input = "DOWN";
+                        return;
+                    }
+                    if( screen.getInnerWidth() * 1 / 3 >= event.pos[0]){
+                        Tetris.game.player.input = "LEFT";
+                        return;
+                    }
+                    if( screen.getInnerWidth() * 1 / 3 <= event.pos[0] && screen.getInnerWidth() * 2 / 3 >= event.pos[0]){
+                        Tetris.game.player.input = "TURN";
+                        return;
+                    }
+                    Tetris.game.player.input = "RIGHT";
+                }
                 break;
         };
     };
