@@ -1,12 +1,14 @@
 var gamejs = require('gamejs');
 var screen = require('Tetris/screen').screen;
 var Tetris = require('Tetris/Tetris').Tetris;
-require('Util/mobile');
+var touch = require('Util/touch');
 
 var SCREEN_WIDTH = 400;
 var SCREEN_HEIGHT = 400;
 
 function main() {
+    touch.init();
+    
     //handle input
     function handleEvent(event) {
         switch(event.key) {
@@ -23,7 +25,7 @@ function main() {
                 Tetris.game.player.input = "LEFT";
                 break;
             default:
-                if(event.type === gamejs.event.TOUCH_START){
+                if(event.type === gamejs.event.MOUSE_DOWN) {
                     if( screen.getInnerHeight() * 2 / 3 <= event.pos[1]){
                         Tetris.game.player.input = "DOWN";
                         return;
