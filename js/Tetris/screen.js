@@ -21,6 +21,8 @@ screen.update = function(){
     screen.canvas = document.getElementById('gjs-canvas');
     screen.tilesX = screen.canvas.width / screen.tileCountX;
     screen.tilesY = screen.canvas.height / screen.tileCountY;
+    screen.screen_width = screen.getWidth(screen.getInnerWidth(), screen.getInnerHeight());
+    screen.screen_height = screen.screen_width;
 }
 
 exports.screen = screen;

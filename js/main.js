@@ -2,12 +2,12 @@ var gamejs = require('gamejs');
 var screen = require('Tetris/screen').screen;
 var Tetris = require('Tetris/Tetris').Tetris;
 var touch = require('Util/touch');
-
-var SCREEN_WIDTH = 400;
-var SCREEN_HEIGHT = 400;
+var fps = require('Util/fps');
 
 function main() {
     touch.init();
+    
+    var fpsDisplay = new fps.FpsDisplay();
     
     //handle input
     function handleEvent(event) {
@@ -46,19 +46,20 @@ function main() {
 
     // game loop
     function gameTick(msDuration) {
+        var display = gamejs.display.setMode([screen.screen_width, screen.screen_height]);
         gamejs.event.get().forEach(function(event) {
             handleEvent(event);
         });
         screen.update();
         Tetris.game.update();
+        fpsDisplay.update(msDuration);
         
         display.clear();
-        
         Tetris.game.draw();
+        fpsDisplay.draw(display);
     };
 
     // start game loop.
-    var display = gamejs.display.setMode([SCREEN_WIDTH, SCREEN_HEIGHT]);
     Tetris.game = new Tetris();
     gamejs.time.fpsCallback(gameTick, this, 30);
 };
