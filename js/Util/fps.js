@@ -23,7 +23,7 @@ exports.FpsDisplay = function() {
    };
 
    this.draw = function(display) {
-      if (fpsAvg < 14) this.lowCPU = true;
+      if (fpsAvg < 60) this.lowCPU = true;
 
       if (this.lowCPU) {
          display.blit(fpsFont.render('Low CPU mode! ' + fpsAvg, '#ff33ff'), [screen.SCREEN_WIDTH - 100, 5]);
