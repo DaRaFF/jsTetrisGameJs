@@ -1,8 +1,10 @@
-var Map = require('Tetris/Map').Map;
-var Player = require('Tetris/Player').Player;
-var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
-var BlockElements = require('Tetris/BlockElements').BlockElements;
-var Timer = require('Tetris/Timer').Timer;
+if(typeof require == 'function'){
+    var Map = require('Tetris/Map').Map;
+    var Player = require('Tetris/Player').Player;
+    var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
+    var BlockElements = require('Tetris/BlockElements').BlockElements;
+    var Timer = require('Tetris/Timer').Timer;
+}
 
 var tetris = {};
 var Tetris = {

@@ -1,8 +1,10 @@
-var gamejs = require('gamejs');
-var screen = require('Tetris/screen').screen;
-var Tetris = require('Tetris/Tetris').Tetris;
-var touch = require('Util/touch');
-var fps = require('Util/fps');
+if(typeof require == 'function'){
+    var gamejs = require('gamejs');
+    var screen = require('Tetris/screen').screen;
+    var Tetris = require('Tetris/Tetris').Tetris;
+    var touch = require('Util/touch');
+    var fps = require('Util/fps');
+}
 
 function main() {
     touch.init();

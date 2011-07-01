@@ -7,8 +7,8 @@ describe('Input', function () {
     };
     
     beforeEach(function(){
-        spyOn(engine, 'getInnerHeight').andReturn(900);
-        spyOn(engine, 'getInnerWidth').andReturn(900);
+        spyOn(screen, 'getInnerHeight').andReturn(900);
+        spyOn(screen, 'getInnerWidth').andReturn(900);
         Tetris.game = new Tetris();
     });
     
