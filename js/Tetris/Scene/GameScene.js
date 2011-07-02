@@ -11,7 +11,7 @@ var GameScene = function(director){
     var fpsDisplay = new fps.FpsDisplay();
     
     //handle input
-    function handleEvent(event) {
+    this.handleEvent = function(event) {
         //keyboard input
         if( event.type == gamejs.event.KEY_DOWN){
             if (event.key == gamejs.event.K_UP){
@@ -45,31 +45,19 @@ var GameScene = function(director){
         }
     };
     
-    this.draw = function(display){
+    this.update = function(msDuration){
         screen.update();
         Tetris.game.update();
+        fpsDisplay.update(msDuration);
+    }
+    
+    this.draw = function(display){
         display.clear();
         Tetris.game.draw(display);
+        fpsDisplay.draw(display);
     }
 
-    // game loop
-    //    function gameTick(msDuration) {
-    //        var display = gamejs.display.setMode([screen.screen_width, screen.screen_height]);
-    //        gamejs.event.get().forEach(function(event) {
-    //            handleEvent(event);
-    //        });
-    //        screen.update();
-    //        Tetris.game.update();
-    //        fpsDisplay.update(msDuration);
-    //        
-    //        display.clear();
-    //        Tetris.game.draw();
-    //        fpsDisplay.draw(display);
-    //    };
-
-    // start game loop.
     Tetris.game = new Tetris();
-    //gamejs.time.fpsCallback(gameTick, this, 30);
     return this;
 }
 

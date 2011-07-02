@@ -5,7 +5,7 @@ if(typeof require == 'function'){
 }
 
 function main() {
-    var director = new Director(400,400);
+    var director = new Director();
     var startScene = new StartScene(director);
     director.start(startScene);
 };

@@ -3,7 +3,7 @@ if(typeof require == 'function'){
     var screen = require('Tetris/screen').screen;
 }
 
-var Director = function (width, height) {
+var Director = function () {
     var onAir = false;
     var activeScene = null;
 

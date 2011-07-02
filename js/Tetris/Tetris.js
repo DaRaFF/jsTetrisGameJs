@@ -7,7 +7,6 @@ if(typeof require == 'function'){
     var Timer = require('Tetris/Timer').Timer;
 }
 
-var tetris = {};
 var Tetris = {
     game: null
 };
