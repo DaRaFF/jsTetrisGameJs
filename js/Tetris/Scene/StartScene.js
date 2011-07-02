@@ -12,7 +12,11 @@ var StartScene = function(director) {
     };
 
     this.draw = function(display) {
-        display.blit(startPicture);
+        display.blit(startPicture,[0,0],[0,20]);
+        
+        var title = new gamejs.font.Font('40px monospace');
+        var tetrisSurface = title.render('Tetris');
+        display.blit(tetrisSurface, [70,100]);
     };
 
     var startPicture = gamejs.image.load('img/icon.png');
