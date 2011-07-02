@@ -1,6 +1,6 @@
 if(typeof require == 'function'){
     var gamejs = require('gamejs');
-    var Director = require('Tetris/Director').Director;
+    var Director = require('Tetris/Scene/Director').Director;
     var StartScene = require('Tetris/Scene/StartScene').StartScene;
 }
 
