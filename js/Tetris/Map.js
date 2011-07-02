@@ -25,11 +25,10 @@ var Map = function(tilesX, tilesY){
         }
     }
     
-    this.draw = function(){
+    this.draw = function(display){
         for(var y = 0; y < this.shape.length; y++){
             for(var x = 0; x < this.shape[0].length; x++){
                 if(this.shape[y][x]){
-                    var display = gamejs.display.getSurface();
                     var rect = new gamejs.Rect(
                         screen.tilesX * x, 
                         screen.tilesX * y, 

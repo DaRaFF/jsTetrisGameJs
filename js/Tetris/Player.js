@@ -1,3 +1,7 @@
+if(typeof require == 'function'){
+    var gamejs = require('gamejs');
+}
+
 /**
  * Player
  * 
@@ -54,8 +58,8 @@ var Player = function(game, map){
         this.input = null;
     }
     
-    this.draw = function(){
-        this.currentBlock.draw(); 
+    this.draw = function(display){
+        this.currentBlock.draw(display); 
     }
 }
 

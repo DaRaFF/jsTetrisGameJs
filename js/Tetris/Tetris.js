@@ -1,4 +1,5 @@
 if(typeof require == 'function'){
+    var gamejs = require('gamejs');
     var Map = require('Tetris/Map').Map;
     var Player = require('Tetris/Player').Player;
     var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
@@ -40,12 +41,12 @@ var Tetris = function(){
         this.player.update();
     }
     
-    this.draw = function(){
-        this.map.draw();
-        this.player.draw();
+    this.draw = function(display){
+        this.map.draw(display);
+        this.player.draw(display);
     }
 
-   /**
+    /**
    * Create a new block
    *
    * @returns {Block}

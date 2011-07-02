@@ -50,17 +50,16 @@ var Block = function(shape, tileX, tileY){
    *
    * @return {void} 
    */
-    this.draw = function(){
+    this.draw = function(display){
         for(var y = 0; y < that.shape.length; y++){
             for(var x = 0; x < that.shape[0].length; x++){
                 if(that.shape[y][x]){
-                    var display = gamejs.display.getSurface();
                     var rect = new gamejs.Rect(
                         screen.tilesX * x + screen.tilesX * that.tileX, 
                         screen.tilesY * y + screen.tilesY * that.tileY, 
                         screen.tilesX, 
                         screen.tilesY
-                    );
+                        );
                     gamejs.draw.rect(display, '#ff0000', rect, 0);
                 }
             }
