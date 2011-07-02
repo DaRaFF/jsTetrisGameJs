@@ -1,6 +1,7 @@
 if(typeof require == 'function'){
     var gamejs = require('gamejs');
     var GameScene = require('Tetris/Scene/GameScene').GameScene;
+    var screen = require('Tetris/screen').screen;
 }
 
 var StartScene = function(director) {
@@ -12,7 +13,8 @@ var StartScene = function(director) {
     };
 
     this.draw = function(display) {
-        display.blit(startPicture,[0,0],[0,20]);
+        screen.update();
+        display.blit(startPicture);
         
         var title = new gamejs.font.Font('40px monospace');
         var tetrisSurface = title.render('Tetris');
