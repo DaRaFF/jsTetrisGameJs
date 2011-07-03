@@ -3,11 +3,11 @@ if(typeof require == 'function'){
     var screen = require('Tetris/screen').screen;
     var Tetris = require('Tetris/Tetris').Tetris;
     var fps = require('Util/fps');
+    var EndScene = require('Tetris/Scene/EndScene').EndScene;
 }
 
 var GameScene = function(director){
     var fpsDisplay = new fps.FpsDisplay();
-    
     //handle input
     this.handleEvent = function(event) {
         //keyboard input
@@ -47,6 +47,9 @@ var GameScene = function(director){
         screen.update();
         Tetris.game.update();
         fpsDisplay.update(msDuration);
+        if(Tetris.game.gameOver){
+            director.replaceScene(new EndScene(director));
+        }
     }
     
     this.draw = function(display){

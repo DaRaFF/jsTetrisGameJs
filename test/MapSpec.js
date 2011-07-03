@@ -240,6 +240,40 @@ describe('Tetris/Map', function () {
             expect(expectedMap).toEqual(map.shape);
         });
     });
+    
+    describe('mapFull', function () {
+        it('should be full if an element is on the second top row', function () {
+            var expectedMap = [
+            [0,0,0,0],
+            [0,0,1,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+            ];
+            
+            var map = new Map(4, 5);
+            map.init();
+            map.shape = expectedMap;
+            var isMapFull = map.mapFull();
+            expect(true).toEqual(isMapFull);
+        });
+        
+        it('should be not full if no element is on the second top row', function () {
+            var expectedMap = [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+            ];
+            
+            var map = new Map(4, 5);
+            map.init();
+            map.shape = expectedMap;
+            var isMapFull = map.mapFull();
+            expect(false).toEqual(isMapFull);
+        });
+    });
 });
 
 

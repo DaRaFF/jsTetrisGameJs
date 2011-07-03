@@ -100,6 +100,21 @@ var Map = function(tilesX, tilesY){
             }
         }
     }
+    
+    /**
+   * Check if map is full
+   *
+   * @return {boolean}
+   */
+    this.mapFull = function(){
+        var y = 1;
+        for(var x = 0; x < this.shape[0].length; x++){
+            if(this.shape[y][x]){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 exports.Map = Map;

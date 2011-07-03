@@ -19,6 +19,7 @@ var Player = function(game, map){
     this.lines = 0;
     this.score = 0;
     this.input = null;
+    this.isGameOver = false;
     
     this.init = function(){
         this.currentBlock = this.game.createBlock();

@@ -16,9 +16,13 @@ var StartScene = function(director) {
         screen.update();
         display.blit(startPicture);
         
-        var title = new gamejs.font.Font('40px monospace');
-        var tetrisSurface = title.render('Tetris');
-        display.blit(tetrisSurface, [70,100]);
+        var font = new gamejs.font.Font('40px monospace');
+        var surface = font.render('Tetris');
+        display.blit(surface, [70,100]);
+        
+        font = new gamejs.font.Font('15px monospace');
+        surface = font.render('created by @ralphmeier');
+        display.blit(surface, [40,160]);
     };
 
     var startPicture = gamejs.image.load('img/icon.png');

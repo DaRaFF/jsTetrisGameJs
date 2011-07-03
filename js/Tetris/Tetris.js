@@ -20,6 +20,7 @@ var Tetris = function(){
     this.map;
     this.player;
     this.timer;
+    this.gameOver = false;
     
     this.tileXStartPosition = 7;
     this.tileYStartPosition = 0;
@@ -37,6 +38,7 @@ var Tetris = function(){
     this.update= function(){
         this.timer.update();
         this.player.update();
+        this.updateGameState();
     }
     
     this.draw = function(display){
@@ -53,6 +55,14 @@ var Tetris = function(){
         var blockFactory = new BlockFactory();
         return blockFactory.create(BlockElements, this.tileXStartPosition, this.tileYStartPosition);
     }
+    
+    this.updateGameState = function(){
+        if(this.map.mapFull()){
+            this.gameOver = true;
+        }
+    }
+    
+    
     
     this.init();
 }
