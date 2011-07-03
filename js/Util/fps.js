@@ -5,15 +5,13 @@ exports.FpsDisplay = function() {
     // fps counter
     var lastDurations = [];
     var fpsFont = new gamejs.font.Font();
-    var fpsWarningFont = new gamejs.font.Font('20px monospace');
-    var fpsAvg = 99;
-    this.lowCPU = false;
+    var fpsAvg = 60;
 
     this.update = function(msDuration) {
         // fps
         lastDurations.push(msDuration);
         var sum = 0;
-        lastDurations = lastDurations.splice(0, 10);
+        lastDurations = lastDurations.splice(lastDurations.length-1000, 1000);
         lastDurations.forEach(function(ld) {
             sum += ld;
         });
@@ -21,7 +19,6 @@ exports.FpsDisplay = function() {
     };
 
     this.draw = function(display) {
-        if (fpsAvg < 60) this.lowCPU = true;
         display.blit(fpsFont.render('' + fpsAvg, '#ff33ff'), [screen.SCREEN_WIDTH - 100, 5]);
         return;
     };

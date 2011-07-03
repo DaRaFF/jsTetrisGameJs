@@ -43,7 +43,7 @@ var Director = function () {
         return activeScene;
     };
     var display = gamejs.display.setMode([screen.screen_width, screen.screen_height]);
-    gamejs.time.fpsCallback(tick, this, 30);
+    gamejs.time.fpsCallback(tick, this, 60);
     return this;
 };
 
