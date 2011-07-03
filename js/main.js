@@ -10,5 +10,8 @@ function main() {
     director.start(startScene);
 };
 
-gamejs.preload(['img/icon.png'])
+gamejs.preload([
+    'img/icon.png',
+    'img/blocks.png'
+]);
 gamejs.ready(main);

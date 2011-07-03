@@ -40,6 +40,7 @@ var Block = function(shape, tileX, tileY){
     * @type Array
     */
     this.shape = shape;
+    this.img = gamejs.image.load('img/blocks.png');
     
     this.update = function(){
         
@@ -60,7 +61,9 @@ var Block = function(shape, tileX, tileY){
                         screen.tilesX, 
                         screen.tilesY
                         );
-                    gamejs.draw.rect(display, '#ff0000', rect, 0);
+                    var blockSurface = new gamejs.Surface([50, 50]);
+                    blockSurface.blit(this.img, [0,0], (new gamejs.Rect([0,0], [this.img.rect.width,this.img.rect.height])));
+                    display.blit(blockSurface, rect);
                 }
             }
         }
