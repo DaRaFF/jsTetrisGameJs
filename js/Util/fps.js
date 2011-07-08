@@ -11,7 +11,7 @@ exports.FpsDisplay = function() {
         // fps
         lastDurations.push(msDuration);
         var sum = 0;
-        lastDurations = lastDurations.splice(lastDurations.length-1000, 1000);
+        lastDurations = lastDurations.splice(lastDurations.length-200, 200);
         lastDurations.forEach(function(ld) {
             sum += ld;
         });

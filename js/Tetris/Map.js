@@ -16,6 +16,7 @@ var Map = function(tilesX, tilesY){
     this.shape = [[]];
     this.img = gamejs.image.load('img/blocks.png');
     this.blockSurface = new gamejs.Surface([50, 50]);
+    this.blockSurface.blit(this.img, [0,0], (new gamejs.Rect([0,0], [this.img.rect.width,this.img.rect.height])));
     
     this.init = function(){
         for (var y = 0; y < this.tilesY ; y++) {
@@ -37,7 +38,6 @@ var Map = function(tilesX, tilesY){
                         screen.tilesX, 
                         screen.tilesY
                         );
-                    this.blockSurface.blit(this.img, [0,0], (new gamejs.Rect([0,0], [this.img.rect.width,this.img.rect.height])));
                     display.blit(this.blockSurface, rect);
                 }
             }
