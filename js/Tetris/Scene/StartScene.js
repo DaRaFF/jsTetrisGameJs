@@ -13,7 +13,7 @@ var StartScene = function(director) {
     };
 
     this.draw = function(display) {
-        screen.update();
+        display.clear();
         display.blit(startPicture);
         
         var font = new gamejs.font.Font('40px monospace');

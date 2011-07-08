@@ -19,7 +19,7 @@ var EndScene = function(director) {
     };
 
     this.draw = function(display) {
-        screen.update();
+        display.clear();
         
         var title = new gamejs.font.Font('40px monospace');
         var tetrisSurface = title.render('Game Over');

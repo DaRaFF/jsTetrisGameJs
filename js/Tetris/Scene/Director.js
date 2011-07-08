@@ -10,7 +10,6 @@ var Director = function () {
     var activeScene = null;
 
     function tick(msDuration) {
-        gamejs.display.setMode([screen.screen_width, screen.screen_height]);
         if (!onAir) return;
 
         if (activeScene.handleEvent) {
@@ -42,8 +41,9 @@ var Director = function () {
     this.getScene = function() {
         return activeScene;
     };
+    screen.update();
     var display = gamejs.display.setMode([screen.screen_width, screen.screen_height]);
-    gamejs.time.fpsCallback(tick, this, 60);
+    gamejs.time.fpsCallback(tick, this, 100);
     return this;
 };
 

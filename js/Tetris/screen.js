@@ -8,7 +8,7 @@ var screen = {
 
 screen.getWidth = function(realWidth, realHeight){
     var smaller  = Math.min(realWidth,realHeight);
-    return (smaller > 1024 ? 1024 : smaller);
+    return (smaller > 600 ? 600 : smaller);
 };
 screen.getInnerHeight = function(){
     return window.innerHeight;
