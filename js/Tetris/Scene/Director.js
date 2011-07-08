@@ -2,10 +2,12 @@ if(typeof require == 'function'){
     var gamejs = require('gamejs');
     var screen = require('Tetris/screen').screen;
     var touch = require('Util/touch');
+    var orientation = require('Util/orientation');
 }
 
 var Director = function () {
     touch.init();
+    orientation.init();
     var onAir = false;
     var activeScene = null;
 
