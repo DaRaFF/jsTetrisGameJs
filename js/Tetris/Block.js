@@ -43,6 +43,8 @@ var Block = function(shape, tileX, tileY){
     this.img = gamejs.image.load('img/blocks.png');
     this.blockSurface = new gamejs.Surface([50, 50]);
     this.blockSurface.blit(this.img, [0,0], (new gamejs.Rect([0,0], [this.img.rect.width,this.img.rect.height])));
+    this.tetraederSurface;
+    this.isUpdated = true;
     
     this.update = function(){
         
@@ -54,19 +56,24 @@ var Block = function(shape, tileX, tileY){
    * @return {void} 
    */
     this.draw = function(display){
-        for(var y = 0; y < that.shape.length; y++){
-            for(var x = 0; x < that.shape[0].length; x++){
-                if(that.shape[y][x]){
-                    var rect = new gamejs.Rect(
-                        screen.tilesX * x + screen.tilesX * that.tileX, 
-                        screen.tilesY * y + screen.tilesY * that.tileY, 
-                        screen.tilesX, 
-                        screen.tilesY
-                        );
-                    display.blit(this.blockSurface, rect);
+        if(this.isUpdated){
+            this.tetraederSurface = new gamejs.Surface([screen.screen_width, screen.screen_height]);
+            for(var y = 0; y < that.shape.length; y++){
+                for(var x = 0; x < that.shape[0].length; x++){
+                    if(that.shape[y][x]){
+                        var rect = new gamejs.Rect(
+                            screen.tilesX * x + screen.tilesX * that.tileX, 
+                            screen.tilesY * y + screen.tilesY * that.tileY, 
+                            screen.tilesX, 
+                            screen.tilesY
+                            );
+                        this.tetraederSurface.blit(this.blockSurface, rect);
+                    }
                 }
             }
         }
+        display.blit(this.tetraederSurface);
+        this.isUpdated = false;
     }
     
     /**
@@ -76,6 +83,7 @@ var Block = function(shape, tileX, tileY){
     * @return {void}
     */
     this.turn = function(direction){
+        this.isUpdated = true;
         var oldShape = this.shape;
         var newShape = [];
         switch (oldShape.length) {

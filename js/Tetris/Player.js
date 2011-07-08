@@ -31,11 +31,13 @@ var Player = function(game, map){
             case "RIGHT":
                 if(!this.currentBlock.collide(this.map, 1, 0)){
                     this.currentBlock.tileX++;
+                    this.currentBlock.isUpdated = true;
                 }
                 break;
             case "LEFT":
                 if(!this.currentBlock.collide(this.map, -1, 0)){
                     this.currentBlock.tileX--;
+                    this.currentBlock.isUpdated = true;
                 }
                 break;
             case "DOWN":
@@ -46,6 +48,7 @@ var Player = function(game, map){
                     this.nextBlock = this.game.createBlock();
                 }
                 this.currentBlock.tileY++;
+                this.currentBlock.isUpdated = true;
                 break;
             case "TURN":
                 this.currentBlock.turn('right');
