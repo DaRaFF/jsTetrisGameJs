@@ -1,6 +1,4 @@
-if(typeof require == 'function'){
-    var gamejs = require('gamejs');
-}
+var gamejs = require('gamejs');
 
 /**
  * Player

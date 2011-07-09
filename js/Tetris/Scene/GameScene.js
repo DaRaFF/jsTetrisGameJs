@@ -1,10 +1,8 @@
-if(typeof require == 'function'){
-    var gamejs = require('gamejs');
-    var screen = require('Tetris/screen').screen;
-    var Tetris = require('Tetris/Tetris').Tetris;
-    var fps = require('Util/fps');
-    var EndScene = require('Tetris/Scene/EndScene').EndScene;
-}
+var gamejs = require('gamejs');
+var screen = require('Tetris/screen').screen;
+var Tetris = require('Tetris/Tetris').Tetris;
+var fps = require('Util/fps');
+var EndScene = require('Tetris/Scene/EndScene').EndScene;
 
 var GameScene = function(director){
     var fpsDisplay = new fps.FpsDisplay();

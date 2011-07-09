@@ -1,7 +1,5 @@
-if(typeof require == 'function'){
-    var gamejs = require('gamejs');
-    var screen = require('Tetris/screen').screen;
-}
+var gamejs = require('gamejs');
+var screen = require('Tetris/screen').screen;
 
 /**
  * Block

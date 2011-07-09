@@ -1,7 +1,5 @@
-if(typeof require == 'function'){
-    var gamejs = require('gamejs');
-    var screen = require('Tetris/screen').screen;
-}
+var gamejs = require('gamejs');
+var screen = require('Tetris/screen').screen;
 
 /**
  * Map
@@ -42,7 +40,7 @@ var Map = function(tilesX, tilesY){
                             screen.tilesX, 
                             screen.tilesY
                             );
-                            this.mapSurface.blit(this.blockSurface, rect);
+                        this.mapSurface.blit(this.blockSurface, rect);
                     }
                 }
             }

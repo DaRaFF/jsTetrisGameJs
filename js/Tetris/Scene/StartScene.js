@@ -1,8 +1,6 @@
-if(typeof require == 'function'){
-    var gamejs = require('gamejs');
-    var GameScene = require('Tetris/Scene/GameScene').GameScene;
-    var screen = require('Tetris/screen').screen;
-}
+var gamejs = require('gamejs');
+var GameScene = require('Tetris/Scene/GameScene').GameScene;
+var screen = require('Tetris/screen').screen;
 
 var StartScene = function(director) {
 

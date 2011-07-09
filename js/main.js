@@ -1,8 +1,6 @@
-if(typeof require == 'function'){
-    var gamejs = require('gamejs');
-    var Director = require('Tetris/Scene/Director').Director;
-    var StartScene = require('Tetris/Scene/StartScene').StartScene;
-}
+var gamejs = require('gamejs');
+var Director = require('Tetris/Scene/Director').Director;
+var StartScene = require('Tetris/Scene/StartScene').StartScene;
 
 function main() {
     var director = new Director();
@@ -13,5 +11,5 @@ function main() {
 gamejs.preload([
     'img/icon.png',
     'img/blocks.png'
-]);
+    ]);
 gamejs.ready(main);
