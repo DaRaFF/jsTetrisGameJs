@@ -20,9 +20,9 @@ var BlockFactory = function (){
     this.create = function(blockElements, tileX, tileY){
         var blockElement = blockElements[Math.floor(Math.random() * blockElements.length)];
         var block = new Block(blockElement.shape, tileX, tileY);
-        block.blockSurface = new gamejs.Surface([50, 50]);
+        block.shapeSurface = new gamejs.Surface([50, 50]);
         
-        block.blockSurface.blit(
+        block.shapeSurface.blit(
             blockElement.imageSrc, 
             [0,0], 
             (new gamejs.Rect(

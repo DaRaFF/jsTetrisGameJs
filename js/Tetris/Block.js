@@ -38,7 +38,7 @@ var Block = function(shape, tileX, tileY){
     * @type Array
     */
     this.shape = shape;
-    this.blockSurface;
+    this.shapeSurface;
     this.tetraederSurface;
     this.isUpdated = true;
     
@@ -63,7 +63,7 @@ var Block = function(shape, tileX, tileY){
                             screen.tilesX, 
                             screen.tilesY
                             );
-                        this.tetraederSurface.blit(this.blockSurface, rect);
+                        this.tetraederSurface.blit(this.shapeSurface, rect);
                     }
                 }
             }

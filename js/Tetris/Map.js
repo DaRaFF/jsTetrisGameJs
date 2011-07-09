@@ -66,7 +66,7 @@ var Map = function(tilesX, tilesY){
                     var newTilePosX = block.tileX + x;
                     var newTilePosY = block.tileY + y;
                     this.shape[newTilePosY][newTilePosX] = 1;
-                    this.shapeSurface[newTilePosY][newTilePosX] = block.blockSurface;
+                    this.shapeSurface[newTilePosY][newTilePosX] = block.shapeSurface;
                 }
             }
         }
