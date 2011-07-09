@@ -1,8 +1,8 @@
 var gamejs = require('gamejs');
-var Director = require('Tetris/Scene/Director').Director;
-var StartScene = require('Tetris/Scene/StartScene').StartScene;
 
 function main() {
+    var Director = require('Tetris/Scene/Director').Director;
+    var StartScene = require('Tetris/Scene/StartScene').StartScene;
     var director = new Director();
     var startScene = new StartScene(director);
     director.start(startScene);

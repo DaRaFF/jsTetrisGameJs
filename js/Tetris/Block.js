@@ -38,9 +38,7 @@ var Block = function(shape, tileX, tileY){
     * @type Array
     */
     this.shape = shape;
-    this.img = gamejs.image.load('img/blocks.png');
-    this.blockSurface = new gamejs.Surface([50, 50]);
-    this.blockSurface.blit(this.img, [0,0], (new gamejs.Rect([0,0], [this.img.rect.width,this.img.rect.height])));
+    this.blockSurface;
     this.tetraederSurface;
     this.isUpdated = true;
     
