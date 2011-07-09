@@ -96,6 +96,7 @@ var Map = function(tilesX, tilesY){
     this.rowDelete = function(tileYPos){
         this.isUpdated = true;
         this.shape.splice(tileYPos,1);
+        this.shapeSurface.splice(tileYPos,1);
     }
 
     /**
@@ -108,6 +109,7 @@ var Map = function(tilesX, tilesY){
             if(this.rowFull(y)){
                 this.rowDelete(y);
                 this.shape.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                this.shapeSurface.unshift([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
             }
         }
     }
