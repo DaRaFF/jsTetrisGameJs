@@ -12,17 +12,17 @@ var Map = function(tilesX, tilesY){
     this.tilesX = tilesX;
     this.tilesY = tilesY;
     this.shape = [[]];
-    this.img = gamejs.image.load('img/blocks.png');
-    this.blockSurface = new gamejs.Surface([50, 50]);
-    this.blockSurface.blit(this.img, [0,0], (new gamejs.Rect([0,0], [this.img.rect.width,this.img.rect.height])));
+    this.shapeSurface = [[]];
     this.mapSurface;
     this.isUpdated = true;
     
     this.init = function(){
         for (var y = 0; y < this.tilesY ; y++) {
             this.shape[y] = [];
+            this.shapeSurface[y] = [];
             for (var x = 0; x < this.tilesX; x++) {
                 this.shape[y][x] = 0;
+                this.shapeSurface[y][x] = undefined;
             }
     
         }
@@ -40,7 +40,7 @@ var Map = function(tilesX, tilesY){
                             screen.tilesX, 
                             screen.tilesY
                             );
-                        this.mapSurface.blit(this.blockSurface, rect);
+                        this.mapSurface.blit(this.shapeSurface[y][x], rect);
                     }
                 }
             }
@@ -66,6 +66,7 @@ var Map = function(tilesX, tilesY){
                     var newTilePosX = block.tileX + x;
                     var newTilePosY = block.tileY + y;
                     this.shape[newTilePosY][newTilePosX] = 1;
+                    this.shapeSurface[newTilePosY][newTilePosX] = block.blockSurface;
                 }
             }
         }
