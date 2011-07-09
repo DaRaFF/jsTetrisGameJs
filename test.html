@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jasmine Test Runner</title>
+        <link rel="stylesheet" type="text/css" href="lib/jasmine-0.11.1/jasmine.css">
+        <script src="lib/gamejs/yabble.js"></script>
+        <script src="lib/gamejs/gamejs-wrapped.js"></script>
+        <script src="lib/jasmine-0.11.1/jasmine.js"></script>
+        <script src="lib/jasmine-0.11.1/jasmine-html.js"></script>
+
+    </head>
+    <body>
+        <script>
+            require.setModuleRoot('js/');
+            require.run('test');
+        </script>
+
+    </body>
+</html>

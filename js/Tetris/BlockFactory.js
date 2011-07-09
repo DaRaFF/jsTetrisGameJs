@@ -1,6 +1,4 @@
-if(typeof require == 'function'){
-    var Block = require('Tetris/Block').Block;
-}
+var Block = require('Tetris/Block').Block;
 
 /**
 * Factory for Block creation

@@ -1,3 +1,6 @@
+var screen = require('Tetris/screen').screen;
+var Tetris = require('Tetris/Tetris').Tetris;
+
 describe('Input', function () {
     var e = {
         touches: [{

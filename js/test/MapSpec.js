@@ -1,3 +1,6 @@
+var Map = require('Tetris/Map').Map;
+var Block = require('Tetris/Block').Block;
+
 describe('Tetris/Map', function () {
     var block;
     var map;

@@ -1,3 +1,5 @@
+var Block = require('Tetris/Block').Block;
+
 describe('Block', function () {
     describe('turn Stone', function () {
         it('should be turned right', function () {

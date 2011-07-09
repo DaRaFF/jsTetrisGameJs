@@ -1,3 +1,6 @@
+var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
+var Block = require('Tetris/Block').Block;
+
 describe('BlockFactory', function () {
     describe('create', function () {
         it('should return a L Block', function () {
