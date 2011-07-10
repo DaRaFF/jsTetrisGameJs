@@ -23,14 +23,13 @@ var BlockFactory = function (){
         block.shapeSurface = new gamejs.Surface([50, 50]);
         
         block.shapeSurface.blit(
-            blockElement.imageSrc, 
-            [0,0], 
+            blockElement.imageSrc,
+            [0,0],
             (new gamejs.Rect(
                 [blockElement.imageX,blockElement.imageY], 
-                [blockElement.imageSrc.rect.width,blockElement.imageSrc.rect.height]
-            ))
-        );
-        
+                [50,50]
+                ))
+            );
         return block;
     }
 }

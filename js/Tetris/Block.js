@@ -53,7 +53,7 @@ var Block = function(shape, tileX, tileY){
    */
     this.draw = function(display){
         if(this.isUpdated){
-            this.tetraederSurface = new gamejs.Surface([screen.screen_width, screen.screen_height]);
+            this.tetraederSurface = new gamejs.Surface([screen.canvas.width, screen.canvas.height]);
             for(var y = 0; y < that.shape.length; y++){
                 for(var x = 0; x < that.shape[0].length; x++){
                     if(that.shape[y][x]){
