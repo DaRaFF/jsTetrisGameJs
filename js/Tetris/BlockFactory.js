@@ -24,7 +24,11 @@ var BlockFactory = function (){
         
         block.shapeSurface.blit(
             blockElement.imageSrc,
-            [0,0],
+            (new gamejs.Rect(
+                [0,0], 
+                [50,50]
+                )
+            ),
             (new gamejs.Rect(
                 [blockElement.imageX,blockElement.imageY], 
                 [50,50]
