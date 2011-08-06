@@ -4,6 +4,7 @@ var Player = require('Tetris/Player').Player;
 var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
 var BlockElements = require('Tetris/BlockElements').BlockElements;
 var Timer = require('Tetris/Timer').Timer;
+var Sound = require('Tetris/Sound').Sound;
 
 var Tetris = {
     game: null
@@ -18,12 +19,15 @@ var Tetris = function(){
     this.map;
     this.player;
     this.timer;
+    this.sound;
     this.gameOver = false;
     
     this.tileXStartPosition = 7;
     this.tileYStartPosition = 0;
     
     this.init = function(){
+        this.sound = new Sound();
+        this.sound.init();
         this.map = new Map(16, 16);
         this.map.init();
         this.player = new Player(this, this.map);
