@@ -4,7 +4,6 @@ var Player = require('Tetris/Player').Player;
 var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
 var BlockElements = require('Tetris/BlockElements').BlockElements;
 var Timer = require('Tetris/Timer').Timer;
-var Sound = require('Tetris/Sound').Sound;
 
 var Tetris = {
     game: null
@@ -26,13 +25,13 @@ var Tetris = function(){
     this.tileYStartPosition = 0;
     
     this.init = function(){
-        this.sound = new Sound();
-        this.sound.init();
+//        this.sound = new Sound();
+//        this.sound.init();
         this.map = new Map(16, 16);
         this.map.init();
         this.player = new Player(this, this.map);
         this.player.init();
-        this.timer = new Timer(this, 1000, function(game){
+        this.timer = new Timer(this, 5000, function(game){
             game.player.input = "DOWN";
         });
     }

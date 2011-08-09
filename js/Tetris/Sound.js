@@ -8,22 +8,20 @@ var Sound = function(){
     this.gameSound;
     
     this.init = function(){
-        buzz.defaults.formats = [ 'ogg', 'mp3' ];
-        buzz.defaults.preload = 'auto';
-        buzz.defaults.loop = true;
-        if ( !buzz.isSupported() ) {
-            console.log('buzz is not supported');
-        } else{
-            console.log('buzz is supported');
-        }
-        if (!buzz.isOGGSupported()) {
-            console.log("Your browser doesn't support OGG Format.");
-        }
-        if (!buzz.isMP3Supported()) {
-            console.log("Your browser doesn't support MP3 Format.");
-        }
-        this.gameSound = new buzz.sound('sound/tetris_sound_A' );
-        this.gameSound.play();
+        this.gameSound = new buzz.sound( "/sound/tetris_sound_A", {        
+            formats: [ "mp3", "ogg" ],
+            preload: 'metadata',
+            autoplay: false,
+            loop: true
+        });
+    }
+    
+    this.getNetworkStateMessage = function (){
+        return this.gameSound.getNetworkStateMessage();
+    }
+    
+    this.getStateMessage = function (){
+        return this.gameSound.getStateMessage();
     }
 }
 
