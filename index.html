@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Tetris - created by @ralphmeier</title>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <meta name = "viewport" content = "user-scalable=no, width=device-width">
         <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
         <script src="lib/buzz/buzz.js"></script>
@@ -24,10 +24,10 @@
 
         <link rel='stylesheet' href='style.css' media='all' />
         <script>
-            var buzzSound = new Sound();
-            buzzSound.init();
-            require.setModuleRoot('js/');
-            require.run('main');
+            var buzzSound = new Sound()
+            buzzSound.init()
+            require.setModuleRoot('js/')
+            require.run('main')
         </script>
         <button id="musicOnButton" onclick="buzzSound.gameSound.play()">music on</button>
     </body>
