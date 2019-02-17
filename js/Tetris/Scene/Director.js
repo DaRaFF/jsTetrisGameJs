@@ -2,10 +2,12 @@ const gamejs = require('gamejs')
 const screen = require('Tetris/screen').screen
 const touch = require('Util/touch')
 const orientation = require('Util/orientation')
+const controller = require('Util/controller')
 
 const Director = function () {
   touch.init()
   orientation.init()
+  controller.init()
   let onAir = false
   let activeScene = null
 
