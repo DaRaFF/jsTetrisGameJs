@@ -1,0 +1,25 @@
+{
+  "name": "jstetrisgamejs",
+  "version": "1.0.0",
+  "description": "Do you love Tetris? I do!",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaRaFF/jsTetrisGameJs.git"
+  },
+  "author": "Ralph Meier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaRaFF/jsTetrisGameJs/issues"
+  },
+  "homepage": "https://github.com/DaRaFF/jsTetrisGameJs#readme",
+  "dependencies": {
+    "gamejs": "^2.0.2"
+  }
+}
