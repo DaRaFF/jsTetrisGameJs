@@ -2,4 +2,3 @@ node_modules
 /lib/gamejs-fork/
 .project
 .DS_STORE
-/dist
