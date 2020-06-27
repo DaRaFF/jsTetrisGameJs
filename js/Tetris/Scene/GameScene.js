@@ -1,8 +1,8 @@
 const gamejs = require('gamejs')
-const screen = require('Tetris/screen').screen
-const Tetris = require('Tetris/Tetris').Tetris
-const fps = require('Util/fps')
-const EndScene = require('Tetris/Scene/EndScene').EndScene
+const screen = require('../screen').screen
+const Tetris = require('../Tetris').Tetris
+const fps = require('../../Util/fps')
+const EndScene = require('./EndScene').EndScene
 
 const GameScene = function (director) {
   const fpsDisplay = new fps.FpsDisplay()

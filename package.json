@@ -2,12 +2,14 @@
   "name": "jstetrisgamejs",
   "version": "1.0.0",
   "description": "Do you love Tetris? I do!",
-  "main": "index.js",
+  "private": true,
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack && cp index.html dist/index.html",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,12 @@
   },
   "homepage": "https://github.com/DaRaFF/jsTetrisGameJs#readme",
   "dependencies": {
-    "gamejs": "^2.0.2"
+    "gamejs": "2.0.2"
+  },
+  "devDependencies": {
+    "file-loader": "^6.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

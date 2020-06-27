@@ -1,17 +1,17 @@
 var gamejs = require('gamejs');
-var GameScene = require('Tetris/Scene/GameScene').GameScene;
-var StartScene = require('Tetris/Scene/StartScene').StartScene;
-var screen = require('Tetris/screen').screen;
+var GameScene = require('./GameScene').GameScene;
+var StartScene = require('./StartScene').StartScene;
+var screen = require('../screen').screen;
 
 var EndScene = function(director) {
 
     this.handleEvent = function(event) {
         if (event.key === gamejs.event.K_y) {
-            var GameScene = require('Tetris/Scene/GameScene').GameScene;
+            var GameScene = require('./GameScene').GameScene;
             director.replaceScene(new GameScene(director));
         }
         if (event.key === gamejs.event.K_n) {
-            var StartScene = require('Tetris/Scene/StartScene').StartScene;
+            var StartScene = require('./StartScene').StartScene;
             director.replaceScene(new StartScene(director));
         }
     };

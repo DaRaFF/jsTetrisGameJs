@@ -4,7 +4,7 @@
  */
 
 const gamejs = require('gamejs')
-const screen = require('Tetris/screen').screen
+const screen = require('../Tetris/screen').screen
 
 function orientationHandler (event) {
   screen.update()

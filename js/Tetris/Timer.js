@@ -3,7 +3,7 @@ var Timer = function(game, fallDownTime, callback){
     this.lastTick = new Date;
     this.fallDownTime = fallDownTime;
     this.fallDownTimeLeft = fallDownTime;
-    
+
     this.update = function(){
         this.fallDownTimeLeft -= new Date - this.lastTick;
         this.lastTick = new Date;

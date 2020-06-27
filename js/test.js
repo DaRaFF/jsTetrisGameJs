@@ -12,8 +12,8 @@ function test() {
 };
 
 gamejs.preload([
-    'img/icon.png',
-    'img/blocks.png'
+    './icon.png',
+    './blocks.png'
     ]);
 gamejs.ready(test);
 

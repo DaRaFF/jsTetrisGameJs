@@ -1,8 +1,8 @@
 const gamejs = require('gamejs')
-const screen = require('Tetris/screen').screen
-const touch = require('Util/touch')
-const orientation = require('Util/orientation')
-const controller = require('Util/controller')
+const screen = require('../screen').screen
+const touch = require('../../Util/touch')
+const orientation = require('../../Util/orientation')
+const controller = require('../../Util/controller')
 
 const Director = function () {
   touch.init()
@@ -10,25 +10,6 @@ const Director = function () {
   controller.init()
   let onAir = false
   let activeScene = null
-
-  function tick (msDuration) {
-    if (!onAir) return
-
-    if (activeScene.handleEvent) {
-      gamejs.event.get().forEach(activeScene.handleEvent)
-    } else {
-      // throw all events away
-      gamejs.event.get()
-    }
-    if (activeScene.update) {
-      activeScene.update(msDuration)
-    }
-    if (activeScene.draw) {
-      activeScene.draw(display)
-    }
-    return
-  }
-
 
   this.start = function (scene) {
     onAir = true
@@ -43,9 +24,26 @@ const Director = function () {
   this.getScene = function () {
     return activeScene
   }
+
   screen.update()
   const display = gamejs.display.setMode([screen.screen_width, screen.screen_height])
-  gamejs.time.fpsCallback(tick, this, 100)
+
+  gamejs.onTick(function(msDuration) {
+    if (!onAir) return
+
+    if (activeScene.handleEvent) gamejs.event.onEvent(activeScene.handleEvent)
+    if (activeScene.update) {
+      activeScene.update(msDuration)
+    }
+    if (activeScene.draw) {
+      activeScene.draw(display)
+    }
+  })
+
+  gamejs.event.onEvent(function(event) {
+    activeScene.handleEvent(event)
+  })
+
   return this
 }
 

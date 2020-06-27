@@ -17,6 +17,8 @@ function triggerEvent (type, keycode) {
 function controllerHandler (event) {
   const controller = navigator.getGamepads()[0]
 
+  if (!controller) return
+
   // cross down
   if (controller.buttons[13].pressed) {
     triggerEvent('keydown', gamejs.event.K_DOWN)

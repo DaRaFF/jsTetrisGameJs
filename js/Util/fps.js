@@ -1,5 +1,5 @@
 var gamejs = require('gamejs');
-var screen = require('Tetris/screen');
+var screen = require('../Tetris/screen');
 
 exports.FpsDisplay = function() {
     // fps counter

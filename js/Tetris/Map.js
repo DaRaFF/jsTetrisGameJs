@@ -1,5 +1,5 @@
 var gamejs = require('gamejs');
-var screen = require('Tetris/screen').screen;
+var screen = require('./screen').screen;
 
 /**
  * Map
@@ -30,7 +30,7 @@ var Map = function(tilesX, tilesY){
     
     this.draw = function(display){
         if(this.isUpdated){
-            this.mapSurface = new gamejs.Surface([screen.screen_width, screen.screen_height]);
+            this.mapSurface = new gamejs.graphics.Surface([screen.screen_width, screen.screen_height]);
             for(var y = 0; y < this.shape.length; y++){
                 for(var x = 0; x < this.shape[0].length; x++){
                     if(this.shape[y][x]){

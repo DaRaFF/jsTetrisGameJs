@@ -1,5 +1,5 @@
 var gamejs = require('gamejs');
-var Block = require('Tetris/Block').Block;
+var Block = require('./Block').Block;
 
 /**
 * Factory for Block creation
@@ -20,7 +20,7 @@ var BlockFactory = function (){
     this.create = function(blockElements, tileX, tileY){
         var blockElement = blockElements[Math.floor(Math.random() * blockElements.length)];
         var block = new Block(blockElement.shape, tileX, tileY);
-        block.shapeSurface = new gamejs.Surface([50, 50]);
+        block.shapeSurface = new gamejs.graphics.Surface([50, 50]);
         
         block.shapeSurface.blit(
             blockElement.imageSrc,

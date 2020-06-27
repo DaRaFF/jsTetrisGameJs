@@ -1,9 +1,9 @@
 var gamejs = require('gamejs');
-var Map = require('Tetris/Map').Map;
-var Player = require('Tetris/Player').Player;
-var BlockFactory = require('Tetris/BlockFactory').BlockFactory;
-var BlockElements = require('Tetris/BlockElements').BlockElements;
-var Timer = require('Tetris/Timer').Timer;
+var Map = require('./Map').Map;
+var Player = require('./Player').Player;
+var BlockFactory = require('./BlockFactory').BlockFactory;
+var BlockElements = require('./BlockElements').BlockElements;
+var Timer = require('./Timer').Timer;
 
 var Tetris = {
     game: null

@@ -1,6 +1,6 @@
 var gamejs = require('gamejs');
-var GameScene = require('Tetris/Scene/GameScene').GameScene;
-var screen = require('Tetris/screen').screen;
+var GameScene = require('./GameScene').GameScene;
+var screen = require('../screen').screen;
 
 var StartScene = function(director) {
 
@@ -13,17 +13,17 @@ var StartScene = function(director) {
     this.draw = function(display) {
         display.clear();
         display.blit(startPicture);
-        
+
         var font = new gamejs.font.Font('40px monospace');
         var surface = font.render('Tetris');
         display.blit(surface, [70,100]);
-        
+
         font = new gamejs.font.Font('15px monospace');
         surface = font.render('created by @ralphmeier');
         display.blit(surface, [40,160]);
     };
 
-    var startPicture = gamejs.image.load('img/icon.png');
+    var startPicture = gamejs.image.load('./img/icon.png');
     return this;
 };
 
