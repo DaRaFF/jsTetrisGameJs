@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack && cp index.html dist/index.html && cp style.css dist/style.css",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
