@@ -31,7 +31,6 @@ const Director = function () {
   gamejs.onTick(function(msDuration) {
     if (!onAir) return
 
-    if (activeScene.handleEvent) gamejs.event.onEvent(activeScene.handleEvent)
     if (activeScene.update) {
       activeScene.update(msDuration)
     }
